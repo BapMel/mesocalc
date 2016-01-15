@@ -11807,10 +11807,14 @@ function regular_numbers_interval (sexa1, sexa2) {
 
     var regular_numbers_list = new Array();
 
+    // Find lower and upper bounds.
+
     var nearest_lower1 = 0;
     var nearest_upper1 = regulars_list.length - 1;
     var nearest_lower2 = 0;
     var nearest_upper2 = regulars_list.length - 1;
+    var lower_bound;
+    var upper_bound;
 
     while (nearest_upper1 - nearest_lower1 > 1) {
         var i = Math.floor((nearest_upper1 + nearest_lower1)/2);
@@ -11819,6 +11823,11 @@ function regular_numbers_interval (sexa1, sexa2) {
         } else {
             nearest_upper1 = i;
         }
+    }
+    if (less_equal_sexa_floating(sexa1, regulars_list[nearest_lower1])) {
+        lower_bound = nearest_upper1 - 1;
+    } else {
+        lower_bound = nearest_upper1 - 1;
     }
 
     while (nearest_upper2 - nearest_lower2 > 1) {
@@ -11829,14 +11838,17 @@ function regular_numbers_interval (sexa1, sexa2) {
             nearest_upper2 = i;
         }
     }
+    if (less_equal_sexa_floating(regulars_list[nearest_upper2], sexa2)) {
+        upper_bound = nearest_lower2 + 1;
+    } else {
+        upper_bound = nearest_lower2;
+    }
 
-
-    for (var i = nearest_upper1; i <= nearest_lower2; i++) {
+    // Return the list of all regular numbers within the interval.
+    for (var i = lower_bound; i <= upper_bound; i++) {
         regular_numbers_list.push(regulars_list[i]);
     }
 
-
-    // Finally return both lists.
     return regular_numbers_list;
 }
 
