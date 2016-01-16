@@ -11521,16 +11521,18 @@ function gcd(sexa1, sexa2) {
 function regular_approximation (form) {
 
     var sexa = form.input.value;
+    var nb_digits = form.nb_digits.value;
 
     if (!is_sexa(sexa)) {
         display_result(not_sexa, "regular_approximation");
     } else {
 
-        var inf = regular_approximation_with_database(sexa)[0];
-        var sup = regular_approximation_with_database(sexa)[1];
-var i;
+        var inf = regular_approximation_with_database(sexa, nb_digits)[0];
+        var sup = regular_approximation_with_database(sexa, nb_digits)[1];
+        var i;
 
         var tableau = '<p><table align="center">\n';
+        tableau += "<tr><th>Regular approximations of " + sexa + "</tr>";
         for (i = 0; i < inf.length - 1; i++) {
             tableau += "<tr><td>" + inf[i] + "</td></tr>\n";
         }
@@ -11678,7 +11680,7 @@ function regular_approximation_on_the_fly (sexa) {
 // approximation by regulars, instead of the function
 // "regular_approximation_on_the_fly".
 
-function regular_approximation_with_database (sexa) {
+function regular_approximation_with_database (sexa, nb_digits) {
 
     var approx_list = new Array();
     var inf = new Array();
@@ -11741,10 +11743,7 @@ function regular_approximation_with_database (sexa) {
         // number preceding the number to approximate. For instance, it
         // is 5 for 7 since 6.59.54.14.24 has five places.
 
-        for (var nb_places = 1; 
-             nb_places <= regulars_list[nearest_lower].split(".").length; 
-             nb_places++) {
-
+        for (var nb_places = 1; nb_places <= nb_digits; nb_places++) {
             for (var j = nearest_lower; lower_bound < j; j--) {
                 if (regulars_list[j].split(".").length == nb_places) {
                     lower_bound = j;
@@ -11752,15 +11751,11 @@ function regular_approximation_with_database (sexa) {
                     break;
                 }
             }
-
         }
 
         // Now, do the same for greater approximations.
 
-        for (var nb_places = 1; 
-             nb_places <= regulars_list[nearest_upper].split(".").length; 
-             nb_places++) {
-
+        for (var nb_places = 1; nb_places <= nb_digits; nb_places++) {
             for (var j = nearest_upper; j < upper_bound; j++) {
                 if (regulars_list[j].split(".").length == nb_places) {
                     upper_bound = j;
@@ -11769,6 +11764,7 @@ function regular_approximation_with_database (sexa) {
                 }
             }
         }
+
     }
 
     // Finally return both lists.
@@ -11783,6 +11779,7 @@ function regular_numbers_interval_form (form) {
 
     var sexa1 = form.input1.value;
     var sexa2 = form.input2.value;
+    var nb_digits = form.nb_digits.value;
 
     if (!is_sexa(sexa1) || !is_sexa(sexa2)) {
         display_result(not_sexa, "regular_numbers_interval");
@@ -11792,7 +11789,9 @@ function regular_numbers_interval_form (form) {
 
         var tableau = '<p><table align="center">\n';
         for (i = 0; i < list.length; i++) {
-            tableau += "<tr><td>" + list[i] + "</td></tr>\n";
+            if (list[i].split(".").length <= nb_digits) {
+                tableau += "<tr><td>" + list[i] + "</td></tr>\n";
+            }
         }
         tableau += '</table></p>';
 
@@ -11830,20 +11829,24 @@ function regular_numbers_interval (sexa1, sexa2) {
         lower_bound = nearest_upper1 - 1;
     }
 
-    while (nearest_upper2 - nearest_lower2 > 1) {
-        var i = Math.floor((nearest_upper2 + nearest_lower2)/2);
-        if (less_equal_sexa_floating(regulars_list[i], sexa2)) {
-            nearest_lower2 = i;
+    if (less_equal_sexa_floating(sexa2, "1") 
+        && less_equal_sexa_floating("1", sexa2)) {
+        upper_bound = regulars_list.length - 1;
+    } else {
+        while (nearest_upper2 - nearest_lower2 > 1) {
+            var i = Math.floor((nearest_upper2 + nearest_lower2)/2);
+            if (less_equal_sexa_floating(regulars_list[i], sexa2)) {
+                nearest_lower2 = i;
+            } else {
+                nearest_upper2 = i;
+            }
+        }
+        if (less_equal_sexa_floating(regulars_list[nearest_upper2], sexa2)) {
+            upper_bound = nearest_lower2 + 1;
         } else {
-            nearest_upper2 = i;
+            upper_bound = nearest_lower2;
         }
     }
-    if (less_equal_sexa_floating(regulars_list[nearest_upper2], sexa2)) {
-        upper_bound = nearest_lower2 + 1;
-    } else {
-        upper_bound = nearest_lower2;
-    }
-
     // Return the list of all regular numbers within the interval.
     for (var i = lower_bound; i <= upper_bound; i++) {
         regular_numbers_list.push(regulars_list[i]);
@@ -12201,7 +12204,7 @@ function inverse_table(form) {
         var result = '<p><table align="center">' 
             + '<tr><th colspan="2">Table of reciprocals</th></tr>';
 
-        for (sexa = "1";
+        for (sexa = "2";
              less_equal_sexa(sexa, "1.21");
              sexa = addition_sexa(sexa, "1")) {
 
@@ -12272,47 +12275,34 @@ function regular_liste(form) {
 function regular_inverse_liste(form) {
     var sexa1 = form.input1.value;
     var sexa2 = form.input2.value;
-    var result = "";
-    var prime_list = new Array();
+    var nb_digits = form.nb_digits.value;
 
-    if (!sexa1 || !sexa2) {
-        result = "";
+    if (!is_sexa(sexa1) || !is_sexa(sexa2)) {
+        display_result(not_sexa, "regular_numbers_interval");
     } else {
-        if (!is_sexa(sexa1) || !is_sexa(sexa2)) {
-            result = not_sexas;
-        } else {
 
-            if (!less_equal_sexa(sexa1, sexa2)) {
-                var tmp = sexa1;
-                sexa1 = sexa2;
-                sexa2 = tmp;
+        var list = regular_numbers_interval(sexa1, sexa2);
+
+        var tableau = '<p><table align="center">\n';
+        tableau += '<tr> '
+            + '<th colspan="2">Regular numbers and' 
+            + ' their reciprocal between '
+            + sexa1 + ' and ' + sexa2 
+            + '</th></tr>'
+            +        "<tr><th>Regular numbers</th> "
+            + " <th>Reciprocal numbers</th></tr> ";
+
+        for (i = 0; i < list.length; i++) {
+            if (list[i].split(".").length <= nb_digits) {
+                tableau += "<tr><td>" + list[i] + "</td>\n"
+                    + "<td>" + igi(list[i]) + "</td></tr>\n";
             }
-
-            result = '<p><table align="center">' 
-                + '<tr> '
-                + '<th colspan="2">Regular numbers and' 
-                + ' their reciprocal between '
-                + sexa1 + ' and ' + sexa2 
-                + '</th></tr>'
-                + '<tr><th>Regular numbers</th>' 
-                + ' <th>Reciprocal numbers</th></tr>';
-
-            for (var sexa = sexa1;
-                 less_equal_sexa(sexa, sexa2);
-                 sexa = addition_sexa(sexa, "1")) {
-
-                if (prime_list = is_regular(sexa)) {
-                    result += "<tr><td>" + sexa + "</td>"
-                        + '<td align="right">' 
-                        + prime_list_to_igi(prime_list) + '</td>'
-                        + '</tr>';
-                }
-            }
-            result += "</table></p>";
         }
-    }
 
-    document.getElementById('regular_inverse_liste').innerHTML = result;
+        tableau += '</table></p>';
+
+        document.getElementById('regular_inverse_liste').innerHTML = tableau;
+    }
 }
 
 
@@ -14604,39 +14594,38 @@ onclick="regular(this.form)" />
 
     <div class="encart">
     <form action="" name="form_regular_approximation" onsubmit="return false;">
-    <p>  Regular approximations of a number (<span class="system">60A/F</span>) <br/>
-    <input type="text" size="20" name="input" value=""
+    <p>  Regular approximation <br/>
+of    <input type="text" size="20" name="input" value=""
 onKeyPress="if (event.keyCode == 13) regular_approximation(this.form)"
-    />
+    />   (<span class="system">60A/F</span>) up to <select name="nb_digits">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20" selected>20</option>
+</select> sexagesimal digits: <br/>
     <input type="button" name="bouton" value="Approximations"
-onclick="regular_approximation(this.form)" />  (up
-    to 20 sexagesimal digits)
+onclick="regular_approximation(this.form)" />  
     <!-- <input type="text" size="25" name="output" value="" /> -->
     <div id="regular_approximation"></div>
  </p>
     </form>
 
-</div>
-
-
-
-    <div class="encart">
-    <form action="" name="form_regular_numbers_interval" onsubmit="return false;">
-    <p>  List of regular numbers (<span class="system">60A/F</span>
-      and <span class="system">60A/F</span>)   <br/> 
-between      <input type="text" size="20" name="input1" value=""
-onKeyPress="if (event.keyCode == 13) regular_numbers_interval_form(this.form)"
-    />
-and     <input type="text" size="20" name="input2" value=""
-onKeyPress="if (event.keyCode == 13) regular_numbers_interval_form(this.form)"
-    />: 
-<br/>
-    <input type="button" name="bouton" value="Interval"
-onclick="regular_numbers_interval_form(this.form)" /> (up
-    to 20 sexagesimal digits) <!-- <input type="text" size="25" name="output" value="" /> -->
-    <div id="regular_numbers_interval"></div>
- </p>
-    </form>
 </div>
 
 
@@ -14659,7 +14648,7 @@ onclick="facteurs(this.form)" />
 
     <div class="encart">
     <form action="" name="form_gcd" onsubmit="return false;">
-    <p>  Greatest common divisor (<span class="system">60A/F</span> and <span class="system">60A/F</span> &rarr; <span class="system">60A/F</span>) <br/>
+    <p>  Greatest common divisor (<span class="system">60A</span> and <span class="system">60A</span> &rarr; <span class="system">60A</span>) <br/>
     <input type="text" size="20" name="input1" value=""
 onKeyPress="if (event.keyCode == 13) gcd_form(this.form)"
     /> and
@@ -14777,22 +14766,47 @@ onclick="inverse_table(this.form)" />
 </div>
 
 
-
     <div class="encart">
-
-    <form action="" name="form_regular_liste" onsubmit="return false;">
-    <p> Table of regular numbers  (<span class="system">60A/F</span>) <br/>
-    from 
-    <input type="text" size="10" name="input1" value="" onKeyPress="if
-(event.keyCode == 13) regular_liste(this.form)" /> 
-    to <input type="text" size="10" name="input2" value="" onKeyPress="if
-(event.keyCode == 13) regular_liste(this.form)" />: <br/>
-    <input type="button" name="bouton" value="Table" 
-onclick="regular_liste(this.form)" />
-    <div id="regular_liste"></div> </p>
+    <form action="" name="form_regular_numbers_interval" onsubmit="return false;">
+    <p>  Table of regular numbers (<span class="system">60A/F</span>
+      and <span class="system">60A/F</span>)   <br/> 
+between      <input type="text" size="20" name="input1" value=""
+onKeyPress="if (event.keyCode == 13) regular_numbers_interval_form(this.form)"
+    />
+and     <input type="text" size="20" name="input2" value=""
+onKeyPress="if (event.keyCode == 13) regular_numbers_interval_form(this.form)"
+    /> 
+<br/>
+up to <select name="nb_digits">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20" selected>20</option>
+</select> sexagesimal digits: <br/>
+    <input type="button" name="bouton" value="Table"
+onclick="regular_numbers_interval_form(this.form)" /> 
+    <div id="regular_numbers_interval"></div>
+ </p>
     </form>
-
 </div>
+
+
 
 
 
@@ -14800,14 +14814,35 @@ onclick="regular_liste(this.form)" />
 
     <form action="" name="form_regular_inverse_liste" onsubmit="return false;">
     <p> Table of regular and reciprocal numbers
-(<span class="system">60A/F</span>) <br/>  from 
+ <br/>  from 
     <input type="text" size="10" name="input1" value="" onKeyPress="if
 (event.keyCode == 13) regular_inverse_liste(this.form)"
     /> to <input type="text"
 size="10" name="input2" value="" onKeyPress="if (event.keyCode ==
 13) regular_inverse_liste(this.form)"
-    />:
-    <br/>
+    /> (<span class="system">60A/F</span>) <br/>
+up to <select name="nb_digits">
+<option value="1">1</option>
+<option value="2" selected>2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+</select> sexagesimal digits: <br/>
     <input type="button"
 name="bouton" value="Table"
 onclick="regular_inverse_liste(this.form)" />
@@ -16379,7 +16414,7 @@ web browser while displaying the present web page.  </p>
 <p>Last modifications:</p>
 <ul>
 <li>15th January 2016: two new features. 1) Regular approximation of a
-number; 2) list of regular numbers. This was made possible by Mathieu
+number; 2) a new algorithm to list regular numbers, made possible by Mathieu
 Ossendrijver's huge database of regular numbers.</li> 
 <li>16th September 2015: bug correction in measurement units. Now, input
     numbers can be either decimal or sexagesimal (until recently, only
@@ -16396,7 +16431,7 @@ Ossendrijver's huge database of regular numbers.</li>
     <p>Copyright (C) <a href="http://baptiste.meles.free.fr/">Baptiste
 MÉLÈS</a> 2013.</p>
 
-    <p> Latest version: 15th January 2016.</p>
+    <p> Latest version: 16th January 2016.</p>
 
     <p>This program is free software: you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
