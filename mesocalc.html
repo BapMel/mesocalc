@@ -101,13 +101,13 @@ div.titre {
 }
 
 
-    .encart {
-	    background: #eee;
-	    border: 2px solid #ddd;
-	    border-radius: 0 20px 0 0;
-	    padding: 5px 25px 7px 25px; 
-	    margin: 30px 0;
-    }
+.encart {
+	background: #eee;
+	border: 2px solid #ddd;
+	border-radius: 0 20px 0 0;
+	padding: 5px 25px 7px 25px; 
+	margin: 30px 0;
+}
 
 div#corps { 
     margin-left: 16em;
@@ -137,17 +137,17 @@ input {
 	font-family: monospace;
 }
 
-    .system {
-	    color: #0080C0;
-        font-weight: bold;
-    }
+.system {
+	color: #0080C0;
+font-weight: bold;
+}
 
-    .result_line {
-	    font-weight: bold;
-	    background-color: white;
-	    border: 1px;
-	    padding: 0 2em;
-    }
+.result_line {
+	font-weight: bold;
+	background-color: white;
+	border: 1px;
+	padding: 0 2em;
+}
 
 div#nav
 a { 
@@ -186,9 +186,9 @@ div#titre {
     padding-bottom: 4em;
 }
 
-    .encadre {
-	    border: 1px solid black;
-    }
+.encadre {
+	border: 1px solid black;
+}
 
 div#titre p {
 	color: maroon;
@@ -11481,7 +11481,7 @@ function gcd(sexa1, sexa2) {
     }
 
     while (c.length > 0) {
-        result = multiplication_sexa(result, c.shift());
+        result = multiplication_sexa_absolu(result, c.shift());
     }
 
     return result;
@@ -11894,11 +11894,11 @@ function regular(form) {
 
 function gcd_form(form) {
 
-var sexa1 = form.input1.value;
-var sexa2 = form.input2.value;
+    var sexa1 = form.input1.value;
+    var sexa2 = form.input2.value;
 
     var result = (is_sexa(sexa1) && is_sexa(sexa2)) ? 
-gcd(sexa1, sexa2) : not_sexa;
+        gcd(sexa1, sexa2) : not_sexa;
 
     display_result(result, "gcd");
 }
