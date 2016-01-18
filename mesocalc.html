@@ -9903,7 +9903,8 @@ function power_general(nb, power_nb, base) {
 // This function converts numbers from one base to another.
 function base_to_base (number, from, to) {
 
-    var result = base10_to_base(base_to_base10(number, from), to);
+    var result = from == to ? number :
+        base10_to_base(base_to_base10(number, from), to);
 
     return result;
 }
@@ -11194,7 +11195,7 @@ function nth_root(sexa, root) {
     // This algorithm does not use big numbers. It is quite quick
     // (except concerning the factorization) and is not affected by
     // JavaScript's limit of 2^53.
-    //
+
 
     // The list of prime factors.
     var primes = prime_factors(sexa); 
@@ -11224,15 +11225,15 @@ function nth_root(sexa, root) {
             return nu;
     }
 
-    // The numbers of occurrences of 3 and 5 must be congruent with
-    // respect to the root. Otherwise, the result is undefined.
+    // The numbers of occurrences of 3 and 5 must be congruent with each
+    // other modulo the root. Otherwise, the result is undefined.
     if (counts["3"] % root != counts["5"] % root) {
         return nu;
     } 
 
-           // If the number of 3's (and of 5's) is not a multiple of the root,
-           // and if in floating mode, then multiply the number by the right
-           // power of 60 (i.e of 2*2*3*5).
+           // If the number of 3's (and of 5's) is not a multiple of the
+           // root, and if in floating mode, then multiply the number by
+           // the right power of 60 (i.e of 2*2*3*5).
            if (counts["3"] % root != 0) {
              if (sexa_floating) {
                var shift = counts["3"];
@@ -11244,13 +11245,12 @@ function nth_root(sexa, root) {
            }
     }
 
-    // Now 3's and 5's numbers are multiple of the root. Is it still the
-    // case for 2's? If not, the result is undefined.
+    // Now the numbers of 3's and 5's are multiple of the root. Is it
+    // still the case for 2's? If not, the result is undefined.
     if (counts["2"] % root != 0) 
         return nu;
 
-    // Since everything seems to go well, now we compute the square
-    // root.
+    // Since everything seems to go well, now we compute the nth root.
     for (var key in counts) {
         result = 
             multiplication_sexa(
