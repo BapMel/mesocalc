@@ -10483,6 +10483,12 @@ function deci2sexa(form) {
 // Sexagesimal addition.
 function addition_sexa(nb1, nb2) {
     var base = 60;
+
+    // In case nb1 or nb2 be decimal, convert them into sexagesimal
+    // numbers.
+    nb1 = is_sexa(nb1) ? nb1 : Deci_to_sexa_absolute(nb1);
+    nb2 = is_sexa(nb2) ? nb2 : Deci_to_sexa_absolute(nb2);
+
     var result = addition_general(nb1, nb2, base);
 
     return result;
@@ -10596,6 +10602,12 @@ function addition(form) {
 function subtraction_sexa(nb1, nb2) {
 
     var base = "60";
+
+    // In case nb1 or nb2 be decimal, convert them into sexagesimal
+    // numbers.
+    nb1 = is_sexa(nb1) ? nb1 : Deci_to_sexa_absolute(nb1);
+    nb2 = is_sexa(nb2) ? nb2 : Deci_to_sexa_absolute(nb2);
+
     var result = subtraction_general(nb1, nb2, base);
 
     return result;
@@ -10735,6 +10747,12 @@ function multiplication_deci(nb1, nb2) {
 // Absolute sexagesimal multiplication.
 function multiplication_sexa_absolu(nb1, nb2) {
     var base = 60;
+
+    // In case nb1 or nb2 be decimal, convert them into sexagesimal
+    // numbers.
+    nb1 = is_sexa(nb1) ? nb1 : Deci_to_sexa_absolute(nb1);
+    nb2 = is_sexa(nb2) ? nb2 : Deci_to_sexa_absolute(nb2);
+
     var result = multiplication_general(nb1, nb2, base);
 
     return result;
@@ -10744,6 +10762,12 @@ function multiplication_sexa_absolu(nb1, nb2) {
 // Floating or absolute sexagesimal multiplication.
 function multiplication_sexa(nb1, nb2) {
     var base = 60;
+
+    // In case nb1 or nb2 be decimal, convert them into sexagesimal
+    // numbers.
+    nb1 = is_sexa(nb1) ? nb1 : Deci_to_sexa_absolute(nb1);
+    nb2 = is_sexa(nb2) ? nb2 : Deci_to_sexa_absolute(nb2);
+
     var result = multiplication_sexa_absolu(nb1, nb2, base);
 
     return floating_or_absolute(result);
@@ -10840,14 +10864,14 @@ function multiplication(form) {
 // result["quotient"] and result["remainder"].
 function division_sexa(dividend, divisor) {
 
-         var result = new Object();
+    var result = new Object();
 
-         if (sexa_floating) {
-           result["quotient"] = multiplication_sexa(dividend, igi(divisor));
-           result["remainder"] = "0";
-       } else {
-           return division_sexa_absolute(dividend, divisor);
-       }
+    if (sexa_floating) {
+        result["quotient"] = multiplication_sexa(dividend, igi(divisor));
+        result["remainder"] = "0";
+    } else {
+        return division_sexa_absolute(dividend, divisor);
+    }
 
     // The result is a hash table: it contains both result["quotient"]
     // and result["remainder"].
@@ -12591,20 +12615,6 @@ function susi2longueur(susi) {
     }
 
 
-    // Retour en sexagésimal.
-    // danna = Deci_to_sexa_absolute(danna_deci);
-    // us = Deci_to_sexa_absolute(us_deci);
-    // ninda = Deci_to_sexa_absolute(ninda_deci);
-    // kus = Deci_to_sexa_absolute(kus_deci);
-    // susi = Deci_to_sexa_absolute(susi_deci);
-
-    // Formatage du résultat.
-    // result = (danna != 0 ? systemeS(danna) + " danna " : "") 
-    //     + (us != 0 ? us + " uš " : "") 
-    //     + (ninda != 0 ? ninda + " ninda " : "") 
-    //     + (kus != 0 ? kus + " kuš " : "") 
-    //     + (susi != 0 ? susi + " šusi " : ""); 
-
     result = length_with_fractions(danna_deci, us_deci, ninda_deci, 
                                    kus_deci, susi_deci); 
     return result;
@@ -12718,7 +12728,7 @@ function surface_with_fractions (gan, sar, gin, se, reste) {
     if (se != 0 || reste != "") {
         result += (se != 0 ? se + " " : "")
                + (reste != "" ? reste + " " : "")
-               + "še"; 
+               + "še "; 
     }
 
     return result;
@@ -12832,7 +12842,7 @@ function se2surface(se, reste) {
     var ratio;
 
     if (se_deci == 0 && reste == "") {
-        return "0 še";
+        return "0 še ";
     }
 
     ratio = gin2se_ratio_deci;
@@ -12861,18 +12871,6 @@ function se2surface(se, reste) {
         sar_deci = reste_local;
         gan_deci += quotient;
     }
-
-    // Retour en sexagésimal.
-    // gan = Deci_to_sexa_absolute(gan_deci);
-    // sar = Deci_to_sexa_absolute(sar_deci);
-    // gin = Deci_to_sexa_absolute(gin_deci);
-    // se = Deci_to_sexa_absolute(se_deci);
-
-    // Formatage du résultat.
-    // result = (gan != 0 ? systemeG(gan) + " gan " : "") 
-    //     + (sar != 0 ? systemeS(sar) + " sar " : "") 
-    //     + (gin != 0 ? gin + " gin " : "") 
-    //     + (se != 0 ? systemeS(se) + " še " : ""); 
 
     result = surface_with_fractions(gan_deci, sar_deci, gin_deci, se_deci, 
                                     reste);
@@ -12904,7 +12902,7 @@ function se2poids(se) {
     var ratio;
 
     if (se_deci == 0) {
-        return "0 še";
+        return "0 še ";
     }
 
     ratio = gin2se_ratio_deci;
@@ -12970,7 +12968,7 @@ function se2capacite(se) {
     var ratio;
 
     if (se_deci == 0) {
-        return "0 še";
+        return "0 še ";
     }
 
     ratio = gin2se_ratio_deci;
@@ -13222,26 +13220,52 @@ function Longueur(danna, us, ninda, kus, susi) {
 // }
 
 
+// This function apprixmates Mesopotamian mesures with metric units.
 
+function approx_measure(small_unit, ratio_to_metric_unit,
+                        ratio_to_metric_decimals, name_of_metric_unit, 
+                        number_of_decimals) {
 
-function approx_length(susi) {
-    var susi_deci = is_sexa(susi) ? parseInt(Sexa_vers_deci(susi)) : susi;
+    // Take the number as a string.
+    small_unit = small_unit.toString();
+    var small_unit_deci = is_sexa(small_unit) ?
+        parseInt(Sexa_vers_deci(small_unit)) : small_unit;
 
-    // 1 kuš = 30 šusi = 0.5 m
-    var kus = Math.floor(susi_deci / 30);
-    var remaining_susi = susi_deci % 30;
-    var metres = Math.floor(kus / 2);
+    // How many decimals are to be displayed.
+    var scale = Math.pow(10, number_of_decimals);
+    var zeros = "";
+    for (var i = 1; i < number_of_decimals; i++) {
+        zeros += "0";
+    }
 
-    // 1 kuš = 30 šusi = 500 mm
-    var millimetres = 
-        Math.round((Math.round(500 * (kus % 2) + (remaining_susi * 500/30)) * 1000) / 1000);
+    // Separation of the metric unit and its decimals.
+    var metric_unit = Math.floor(small_unit_deci / ratio_to_metric_unit);
+    var remaining_small_unit = small_unit_deci % ratio_to_metric_unit;
 
-    var result = "(≈ " + metres.toLocaleString()
-        + (millimetres == 0 ? "" : "." + ("00" + millimetres).slice(-3))
-        + " metre" + (metres >= 2 ? "s" : "") + ")";
+    // Computation of the decimals.
+    var metric_decimals = 
+        Math.round((remaining_small_unit 
+                    * ratio_to_metric_decimals 
+                    * scale) / scale);
+
+    // Display the result.
+    var result = "(≈ " + metric_unit.toLocaleString()
+        + (metric_decimals == 0 ? "" : "." 
+           + (zeros + metric_decimals).slice(-number_of_decimals))
+        + " " + name_of_metric_unit + (metric_unit >= 2 ? "s" : "") + ")";
 
     return result;
 }
+
+
+
+function approx_length(susi) {
+
+    var result = approx_measure(susi, 60, 50/3, "meter", 3);
+
+    return result;
+}
+
 
 
 function add_longueurs(form) {
@@ -13351,20 +13375,19 @@ function mult_longueur_form(form) {
 ////////////////////////////////////////////////////////////////
 
 
-function approx_surface(se) {
+function approx_surface(se, reste) {
     var se_deci = is_sexa(se) ? parseInt(Sexa_vers_deci(se)) : se;
+    var square_susi = se_deci * 12;
 
-// 1 sar = 10800 še = 36 m², so 300 še = 1 m²
-    var sqmetres = Math.floor(se_deci / 300);
-    var remaining_se = se_deci % 300;
+    if (reste != "" || reste != 0) {
+        var fraction = new Array();
+        fraction = reste.split("/");
+        square_susi += 12 * (fraction[0] == "" ? 0 : 
+                             parseInt(fraction[0]) / parseInt(fraction[1]));
+    }
 
-// 300 še = 1000 mm²
-    var sqmillimetres = 
-        Math.round((Math.round((remaining_se * 1000 / 300)) * 1000) / 1000);
-
-    var result = "(≈ " + sqmetres.toLocaleString()
-        + (sqmillimetres == 0 ? "" : "." + ("00" + sqmillimetres).slice(-3))
-        + " square metre" + (sqmetres >= 2 ? "s" : "") + ")";
+    var result = approx_measure(square_susi, 3600, 100000/36, 
+                                "square meter", 7);
 
     return result;
 }
@@ -13387,7 +13410,7 @@ function add_surfaces(form) {
         surface2se(gan1, sar1, gin1, se1),
         surface2se(gan2, sar2, gin2, se2));
 
-    result = se2surface(result_se, 0) + " " + approx_surface(result_se);
+    result = se2surface(result_se, 0) + approx_surface(result_se, 0);
 
     form.output.value = result;
 }
@@ -13411,7 +13434,7 @@ function soustr_surfaces(form) {
     //    if (Sexa_vers_deci(se1) >= Sexa_vers_deci(se2)) {
     if (less_equal_sexa(se2, se1)) {
         var se = subtraction_sexa(se1, se2);
-    result = se2surface(se, 0) + " " + approx_surface(se);
+    result = se2surface(se, 0) + approx_surface(se, 0);
     }
     else {
         result = negative;
@@ -13433,7 +13456,7 @@ function mult_surface_form(form) {
                 surface2se(gan, sar, gin, se), 
                 scalaire);
 
-    result = se2surface(result_se, 0) + " " + approx_surface(result_se);
+    result = se2surface(result_se, 0) + approx_surface(result_se, 0);
 
     form.output.value = result;
 }
@@ -13445,7 +13468,7 @@ function mult_deux_longueurs(susi1, susi2) {
     var ratio = 12; // 1 se = 12 square susi
 
     if (susi1 == "0" || susi2 == "0") {
-        result = "0 še";
+        result = "0 še ";
     } else {
         var susi_carre = multiplication_sexa_absolu(susi1, susi2);
         var se_deci = Math.floor(Sexa_vers_deci(susi_carre) / ratio);
@@ -13453,7 +13476,7 @@ function mult_deux_longueurs(susi1, susi2) {
         var se_sexa = Deci_to_sexa_absolute(se_deci);
 
         reste = reste == 0 ? "" : simplif_fraction(reste, ratio);
-        result = se2surface(se_sexa, reste) + approx_surface(se_sexa);
+        result = se2surface(se_sexa, reste) + approx_surface(se_sexa, reste);
     }
 
     return result;
@@ -13469,20 +13492,19 @@ function mult_deux_longueurs(susi1, susi2) {
 ////////////////////////////////////////////////////////////////
 
 
-function approx_volume(se) {
+function approx_volume(se, reste) {
     var se_deci = is_sexa(se) ? parseInt(Sexa_vers_deci(se)) : se;
+    var cubic_susi = se_deci * 360;
 
-    // 1 sar = 10800 še = 18 m³, so 600 še = 1 m³
-    var cubemetres = Math.floor(se_deci / 600);
-    var remaining_se = se_deci % 600;
+    if (reste != "" || reste != 0) {
+        var fraction = new Array();
+        fraction = reste.split("/");
+        cubic_susi += 360 * (fraction[0] == "" ? 0 : 
+                             parseInt(fraction[0]) / parseInt(fraction[1]));
+    }
 
-    // 1800 še = 3 m³ = 3000 mm³
-    var cubemillimetres = 
-        Math.round((Math.round((remaining_se * 3000 / 1800)) * 1000) / 1000);
-
-    var result = "(≈ " + cubemetres.toLocaleString()
-        + (cubemillimetres == 0 ? "" : "." + ("00" + cubemillimetres).slice(-3))
-        + " cubic metre" + (cubemetres >= 2 ? "s" : "") + ")";
+    var result = approx_measure(cubic_susi, 216000, 10000/216, 
+                                "cube meter", 7);
 
     return result;
 }
@@ -13504,7 +13526,7 @@ function add_volumes(form) {
     var result_se = addition_sexa(volume2se(gan1, sar1, gin1, se1), 
                           volume2se(gan2, sar2, gin2, se2));
 
-    result = se2volume(result_se, 0) + " " + approx_volume(result_se);
+    result = se2volume(result_se, 0) + approx_volume(result_se, 0);
 
     form.output.value = result;
 }
@@ -13527,7 +13549,7 @@ function soustr_volumes(form) {
     se2 = surface2se(gan2, sar2, gin2, se2);
     if (less_equal_sexa(se2, se1)) {
         var se = subtraction_sexa(se1, se2);
-        result = se2volume(se, 0) + " " + approx_volume(se);
+        result = se2volume(se, 0) + approx_volume(se, 0);
     }
     else {
         result = negative;
@@ -13549,7 +13571,7 @@ function mult_volume_form(form) {
         volume2se(gan, sar, gin, se), 
         scalaire);
 
-    result = se2volume(result_se, 0) + " " + approx_volume(result_se);
+    result = se2volume(result_se, 0) + approx_volume(result_se, 0);
 
     form.output.value = result;
 }
@@ -13587,10 +13609,10 @@ function mult_trois_longueurs_form(form) {
 function mult_surface_longueur(se, susi) {
     var result = "";
     var facteur = "12";
-    var ratio = 360; // 1 se = 360 susi³
+    var ratio = 360; // 1 se = 360 susi^3
 
     if (se == 0 || susi == 0 || facteur == 0) {
-        result = "0 še";
+        result = "0 še ";
     } else {
         var susi_cube = 
             multiplication_sexa_absolu(
@@ -13601,7 +13623,7 @@ function mult_surface_longueur(se, susi) {
         var se_sexa = Deci_to_sexa_absolute(se_deci);
 
         reste = reste == 0 ? "" : " " + simplif_fraction(reste, ratio);
-        result = se2volume(se_sexa, reste) + " " + approx_volume(se_sexa);
+        result = se2volume(se_sexa, reste) + approx_volume(se_sexa, reste);
     }
 
     return result;
@@ -13630,10 +13652,10 @@ function mult_surface_longueur_form(form) {
 
 function mult_trois_longueurs(susi1, susi2, susi3) {
     var result = "";
-    var ratio = 360; // 1 se = 360 susi³
+    var ratio = 360; // 1 se = 360 susi^3
 
     if (susi1 == 0 || susi2 == 0 || susi3 == 0) {
-        result = "0 še";
+        result = "0 še ";
     } else {
         var susi_cube = multiplication_sexa_absolu(
             multiplication_sexa_absolu(susi1, susi2), susi3);
@@ -13642,7 +13664,7 @@ function mult_trois_longueurs(susi1, susi2, susi3) {
         var se_sexa = Deci_to_sexa_absolute(se_deci);
 
         reste = reste == 0 ? "" : simplif_fraction(reste, ratio);
-        result = se2volume(se_sexa, reste) + " " + approx_volume(se_sexa);
+        result = se2volume(se_sexa, reste) + approx_volume(se_sexa, reste);
     }
 
     return result;
@@ -13664,14 +13686,7 @@ function mult_trois_longueurs(susi1, susi2, susi3) {
 function approx_capacity(se) {
     var se_deci = is_sexa(se) ? parseInt(Sexa_vers_deci(se)) : se;
 
-    var litres = Math.floor(se_deci / (60 * 180));
-    var remaining_se = se_deci % (60 * 180);
-    var millilitres = 
-        Math.round((Math.round((remaining_se * 60 * 180 / 1000)) * 1000) / 1000);
-
-    var result = "(≈ " + litres.toLocaleString()
-        + (millilitres == 0 ? "" : "." + ("00" + millilitres).slice(-3))
-        + " litre" + (litres >= 2 ? "s" : "") + ")";
+    var result = approx_measure(se, 10800, 100/108, "litre", 4);
 
     return result;
 }
@@ -13697,7 +13712,7 @@ function add_capacites(form) {
         capacite2se(gur1, bariga1, ban1, sila1, gin1, se1),
         capacite2se(gur2, bariga2, ban2, sila2, gin2, se2));
 
-    result = se2capacite(result_se) + " " + approx_capacity(result_se);
+    result = se2capacite(result_se) + approx_capacity(result_se);
 
     form.output.value = result;
 }
@@ -13725,7 +13740,7 @@ function soustr_capacites(form) {
     se2 = capacite2se(gur2, bariga2, ban2, sila2, gin2, se2);
     if (less_equal_sexa(se2, se1)) {
         var se = subtraction_sexa(se1, se2);
-        result = se2capacite(se) + " " + approx_capacity(se);
+        result = se2capacite(se) + approx_capacity(se);
     }
     else {
         result = negative;
@@ -13751,7 +13766,7 @@ function mult_capacite_form(form) {
         capacite2se(gur, bariga, ban, sila, gin, se), 
         scalaire);
 
-    result = se2capacite(result_se) + " " + approx_capacity(result_se);
+    result = se2capacite(result_se) + approx_capacity(result_se);
 
     form.output.value = result;
 }
@@ -13768,18 +13783,7 @@ function mult_capacite_form(form) {
 function approx_weight(se) {
     var se_deci = is_sexa(se) ? parseInt(Sexa_vers_deci(se)) : se;
 
-    // 1 mana = 10800 še = 0.5 kg
-    var mana = Math.floor(se_deci / 10800);
-    var remaining_se = se_deci % 10800;
-    var kilograms = Math.floor(mana / 2);
-
-    // 1 mana = 10800 še = 500 g
-    var grams = 
-        Math.round((Math.round(500 * (mana % 2) + (remaining_se * 500/10800)) * 1000) / 1000);
-
-    var result = "(≈ " + kilograms.toLocaleString()
-        + (grams == 0 ? "" : "." + ("00" + grams).slice(-3))
-        + " kilogram" + (kilograms >= 2 ? "s" : "") + ")";
+    var result = approx_measure(se, 21600, 5000/108, "kilogram", 6);
 
     return result;
 }
@@ -13801,7 +13805,7 @@ function add_poids(form) {
     var result_se = addition_sexa(poids2se(gu1, mana1, gin1, se1), 
                           poids2se(gu2, mana2, gin2, se2));
 
-    result = se2poids(result_se) + " " + approx_weight(result_se);
+    result = se2poids(result_se) + approx_weight(result_se);
 
     form.output.value = result;
 }
@@ -13826,7 +13830,7 @@ function soustr_poids(form) {
     se2 = poids2se(gu2, mana2, gin2, se2);
     if (less_equal_sexa(se2, se1)) {
         var se = subtraction_sexa(se1, se2);
-        result = se2poids(se) + " " + approx_weight(se);
+        result = se2poids(se) + approx_weight(se);
     }
     else {
         result = negative;
@@ -13849,7 +13853,7 @@ function mult_poids_form(form) {
         poids2se(gu, mana, gin, se), 
         scalaire);
 
-    result = se2poids(result_se) + " " + approx_weight(result_se);
+    result = se2poids(result_se) + approx_weight(result_se);
 
     form.output.value = result;
 }
@@ -14123,7 +14127,8 @@ function systemG_name(divisor) {
     var result;
 
     switch (divisor) {
-    case 34800: result = " šar-gal"; break;
+    case 3888000: result = "šar-gal-šu-nu-tag"; break;
+    case 64800: result = " šar-gal"; break;
     case 10800: result = " šar'u"; break;
     case 1080: result = " šar"; break;
     case 180: result = " bur'u"; break;
@@ -14161,10 +14166,9 @@ function systemeG(sexa) {
         reste = number % rapport;
         number = quotient;
         result = (reste == 0 ? "" : reste
-                  + (divisor == 1 ? "" : systemG_name(divisor))
-                  + (result == "" ? "" : 
-                     divisor <= 34800 ? " " : " + "))
-            + result;
+                  + systemG_name(divisor)
+                  + (result == "" ? ""  : " ")
+            + result);
         divisor *= rapport;
     }
 
@@ -14175,9 +14179,9 @@ function systemeG(sexa) {
         reste = number % rapport;
         number = quotient;
         result = (reste == 0 ? "" : reste
-                  + (divisor == 1 ? "" : systemG_name(divisor))
+                  + systemG_name(divisor)
                   + (result == "" ? "" : 
-                     divisor <= 34800 ? " " : " + "))
+                     divisor <= 64800 ? " " : " + "))
             + result;
         divisor *= rapport;
 
@@ -14188,7 +14192,7 @@ function systemeG(sexa) {
         result = (reste == 0 ? "" : reste
                   + (divisor == 1 ? "" : systemG_name(divisor))
                   + (result == "" ? "" : 
-                     divisor <= 34800 ? " " : " + "))
+                     divisor <= 64800 ? " " : " + "))
             + result;
         divisor *= rapport;
     };
@@ -14196,7 +14200,7 @@ function systemeG(sexa) {
     if (number != 0)
         result = number + systemG_name(divisor)
         + (result == "" ? "" : 
-           (divisor <= 34800 ? " " : " + ") + result);
+           (divisor <= 64800 ? " " : " + ") + result);
 
     return result;
 }
@@ -15393,7 +15397,7 @@ onclick="mult_longueur_form(this.form)" />
     <td>3600 m&sup2;</td> <td> </td>
     <td>36 m&sup2;</td> <td> </td>
     <td>0.6 m&sup2;</td> <td> </td>
-    <td>3 mm&sup2;</td> 
+    <td>33 cm&sup2;</td> 
     </tr>
     <tr>
     <td></td> <td> </td>
@@ -16363,7 +16367,7 @@ onclick="mult_poids_form(this.form)" />
     <td><strong><em>iku</em></strong></td> 
     </tr>
     <tr>
-    <td>34800</td> <td> </td>
+    <td>64800</td> <td> </td>
     <td>10800</td> <td> </td>
     <td>1080</td> <td> </td>
     <td>180</td> <td> </td>
@@ -16541,7 +16545,7 @@ web browser while displaying the present web page.  </p>
 
 <p>Last modifications:</p>
 <ul>
-<li>May 2016: metric approximation of measuring units (metres, litres, etc.).</li> 
+<li>7th May 2016: metric approximation of measuring units (metres, litres, etc.). Bug correction in system G (1 šar-gal = 64800, not 34800).</li> 
 
 <li>15th January 2016: two new features. 1) Regular approximation of a
 number; 2) a new algorithm to list regular numbers, made possible by Mathieu
@@ -16561,7 +16565,7 @@ Ossendrijver's huge database of regular numbers.</li>
     <p>Copyright (C) <a href="http://baptiste.meles.free.fr/">Baptiste
 MÉLÈS</a> 2013.</p>
 
-    <p> Latest version: 16th January 2016.</p>
+    <p> Latest version: 7th May 2016.</p>
 
     <p>This program is free software: you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
