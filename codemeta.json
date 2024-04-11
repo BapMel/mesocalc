@@ -1,0 +1,65 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "type": "SoftwareSourceCode",
+    "applicationCategory": "Mathematics",
+    "author": [
+        {
+            "id": "http://orcid.org/0000-0002-5692-083X",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "CNRS, Archives Henri-Poincaré—PReST, Université de Lorraine"
+            },
+            "email": "baptiste.meles@univ-lorraine.fr",
+            "familyName": "Mélès",
+            "givenName": "Baptiste"
+        }
+    ],
+    "codeRepository": "https://github.com/BapMel/mesocalc",
+    "contributor": [
+        {
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "CNRS, Université Paris-Cité"
+            },
+            "familyName": "Proust",
+            "givenName": "Christine"
+        },
+        {
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Humboldt-Universität"
+            },
+            "familyName": "Ossendrijver",
+            "givenName": "Mathieu"
+        },
+        {
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Université Paris 1 Panthéon Sorbonne, ARSCAN"
+            },
+            "familyName": "Gombert",
+            "givenName": "Bruno"
+        }
+    ],
+    "dateCreated": "2013-03-01",
+    "datePublished": "2013-03-01",
+    "description": "MesoCalc is a Mesopotamian calculator. It computes in sexagesimal place-value notation, operates on measures and converts dates.",
+    "downloadUrl": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/BapMel/mesocalc",
+    "keywords": [
+        "Mesopotamia",
+        "history of mathematics",
+        "measuring units"
+    ],
+    "license": "https://spdx.org/licenses/GPL-3.0+",
+    "name": "MesoCalc",
+    "programmingLanguage": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+    ],
+    "issueTracker": "https://github.com/BapMel/mesocalc/issues"
+}
