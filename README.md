@@ -19,25 +19,33 @@ MesoCalc is a Mesopotamian calculator. It computes in sexagesimal place-value no
 
 ## History
 
-MesoCalc was created in March 2013 by Baptiste MÉLÈS (CNRS, Archives Henri Poincaré, Université de Lorraine) with the scientific assistance of Christine PROUST (CNRS, Université Paris-Diderot) in the framework of the SAW Project (Mathematical Sciences in the Ancient World), headed by Karine CHEMLA (CNRS, Université Paris-Diderot).
+MesoCalc was created in March 2013 by Baptiste Mélès (CNRS, Archives
+Henri Poincaré, Université de Lorraine) with the scientific assistance
+of Christine Proust (CNRS, Université Paris-Diderot) in the framework of
+the SAW Project (Mathematical Sciences in the Ancient World), headed by
+Karine Chemla (CNRS, Université Paris-Diderot).
 
-MesoCalc includes computations made by Mathieu OSSENDRIJVER (Humboldt-Universität) and a calendar designed by Bruno GOMBERT (Université Paris 1 Panthéon Sorbonne, ARSCAN), with their benevolent acceptance.
+MesoCalc includes computations made by Mathieu Ossendrijver
+(Humboldt-Universität) and a calendar designed by Bruno Gombert
+(Université Paris 1 Panthéon Sorbonne, ARSCAN), with their benevolent
+acceptance.
 
 
 ## Installation
 
-- Online use: Open [MesoCalc on Baptiste Mélès'
+- **Online use**: Open [MesoCalc on Baptiste Mélès'
   website](http://baptiste.meles.free.fr/site/mesocalc.html).
 
-- Offline use: Download the `mesocalc.html` file.
+- **Offline use**: Download the [`mesocalc.html`](mesocalc.html) file.
 
 
 ## Usage
 
-- Online use: Open [MesoCalc on Baptiste Mélès'
+- **Online use**: Open [MesoCalc on Baptiste Mélès'
   website](http://baptiste.meles.free.fr/site/mesocalc.html).
 
-- Offline use: Open in your browser your local copy of `mesocalc.html`.
+- **Offline use**: Open in your browser your local copy of
+    [`mesocalc.html`](mesocalc.html).
 
 
 ## Documentation
