@@ -4,9 +4,9 @@
 
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 
-    <head> 
-    <title>MesoCalc</title> 
-    <meta name="author" content="Baptiste Mélès"/> 
+    <head>
+    <title>MesoCalc</title>
+    <meta name="author" content="Baptiste Mélès"/>
     <meta name="description" content="MesoCalc is a Mesopotamian
 calculator." />
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
@@ -15,7 +15,7 @@ calculator." />
     <!--
 
     MesoCalc, a Mesopotamian Calculator written by Baptiste Mélès
-    <baptiste.meles@normalesup.org>. 
+    <baptiste.meles@normalesup.org>.
 
     Copyright (C) 2013 Baptiste Mélès
 
@@ -33,7 +33,7 @@ calculator." />
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -->
-    
+
 <!-- This is the source code of MesoCalc, a Mesopotamian calculator.
 Welcome to readers.
 
@@ -74,25 +74,25 @@ body {
     font-family: Verdana, Charcoal, Geneva, "Luxi Sans", sans-serif;
 }
 
-div#tout { 
+div#tout {
     margin-top: 1em;
     margin-bottom: 1em;
     padding-bottom: 1em;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
     font-size: 13px;
-    background-color: white; 
+    background-color: white;
     width: 800px;
 }
 
-div#nav { 
+div#nav {
     float: left;
     height: 100%;
     width: 15em;
 	position: fixed;
 }
 
-div.titre { 
+div.titre {
 	padding-left: 1em;
 	margin-bottom: .5em;
  	border-bottom: 1px solid #000;
@@ -102,11 +102,11 @@ div.titre {
 	    background: #eee;
 	    border: 2px solid #ddd;
 	    border-radius: 0 20px 0 0;
-	    padding: 5px 25px 7px 25px; 
+	    padding: 5px 25px 7px 25px;
 	    margin: 30px 0;
     }
 
-div#corps { 
+div#corps {
     margin-left: 16em;
     margin-right: 3em;
 }
@@ -120,7 +120,7 @@ table, th, td {
 }
 
 div.center {
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -131,7 +131,7 @@ table.invisible, table.invisible td, table.invisible th {
 }
 
 table.center {
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -157,9 +157,9 @@ input {
     }
 
 div#nav
-a { 
+a {
 	color: maroon;
-	text-decoration: none; 
+	text-decoration: none;
 }
 
 h1 a, h1 a:visited {
@@ -184,7 +184,7 @@ div#corps p {
 
 div#titre {
 	color: #8080FF;
-    text-align: center; 
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     width: 30em;
@@ -212,7 +212,7 @@ h1 {
 h2 {
 	color: navy;
     font-size: 3em;
-    margin-top: 1.5em; 
+    margin-top: 1.5em;
     margin-bottom: 1em;
 }
 
@@ -220,7 +220,7 @@ h3 {
 	color: navy;
     padding-left: 1em;
     font-size: 1.5em;
-    margin-top: 2em; 
+    margin-top: 2em;
     margin-bottom: 1em;
 }
 
@@ -228,7 +228,7 @@ h4 {
 	color: navy;
     padding-left: 3em;
     font-size: 1.2em;
-    margin-top: 2.5em; 
+    margin-top: 2.5em;
     margin-bottom: 1.5em;
 }
 
@@ -258,9 +258,9 @@ div.cadre {
 </head>
 
     <body onload="main();">
-    <script type="text/javascript"> 
+    <script type="text/javascript">
     //<![CDATA[
-    <!-- 
+    <!--
 
 
 ////////////////////////////////////////////////////////////////
@@ -302,14 +302,14 @@ div.cadre {
 
        // This boolean says if the calculator is used in floating or
        // absolute mode.
-       sexa_floating = true; 
+       sexa_floating = true;
 
        // This boolean values are useful to switch on/off the display of some
        // tables.
-       affiche_table_inverse = false; 
-       affiche_table_carres = false; 
-       affiche_table_racines_carrees = false; 
-       affiche_table_racines_cubiques = false; 
+       affiche_table_inverse = false;
+       affiche_table_carres = false;
+       affiche_table_racines_carrees = false;
+       affiche_table_racines_cubiques = false;
 
        // Typical answers (especially for error messages)
        nu = "<em>nu</em> (Undefined).";
@@ -9590,8 +9590,8 @@ div.cadre {
 
        // This calendar was designed and sent by Bruno Gombert in June 2016,
        // after R. A. Parker and W. H. Dubberstein, /Babylonian Chronology,
-       // 626 B.C.-A.D. 45/, Studies in Ancient Oriental Civilization 24, 1942. 
-       
+       // 626 B.C.-A.D. 45/, Studies in Ancient Oriental Civilization 24, 1942.
+
        calendar =
 
        {Nabopolassar: [ {1: "5/4/-626", 2: "5/5/-626", 3: "4/6/-626", 4:
@@ -10611,14 +10611,14 @@ div.cadre {
                          0;
      }
 
-     
+
      function date_update_months() {
        var king = date_king.value;
        var year = date_year.value;
        var month = document.getElementById("date_month");
 
       var months_list = Object.keys(calendar[king][year]).sort(compare_months);
-       
+
        month.options.length = 0;
 
        if (king != "null") {
@@ -10642,7 +10642,7 @@ div.cadre {
        var last_month = months_list[months_list.length - 1];
 
        var max_nb_days = 40; // This value is arbitrarily chosen.
-       
+
        var first_day = new Date();
        var dateParts = calendar[king][year][month].split("/");
        first_day.setYear(dateParts[2]);
@@ -10651,7 +10651,7 @@ div.cadre {
        first_day.setHours(0,0,0,0);
 
        var next_month;
-       
+
        if (calendar[king][year]["b" + month]) {
          next_month = calendar[king][year]["b" + month];
        } else if (month == "b6" && calendar[king][year]["7"]) {
@@ -10674,7 +10674,7 @@ div.cadre {
        return Math.round((next_day - first_day)/(1000*60*60*24));
 }
 
-     
+
 function date_update_days() {
     var king = date_king.value;
     var year = date_year.value;
@@ -10699,7 +10699,7 @@ function date_update_days() {
        var year = date_year.value;
        var month = date_month.value;
        var days_per_month = 30;
-       
+
        var day = document.getElementById("date_day");
 
        day.options.length = 0;
@@ -10722,11 +10722,11 @@ function date_update_days() {
 
 
        if (king == "null") {
-         display_result("", "date_result");        
+         display_result("", "date_result");
        } else {
          var months = ["January", "February", "March", "April", "May", "June", "July",
                        "August", "September", "October", "November", "December"];
-         
+
          var dateParts = calendar[king][year][month].split("/");
          var first_day = new Date();
          first_day.setYear(dateParts[2]);
@@ -10735,20 +10735,20 @@ function date_update_days() {
 
          var current_day =
              new Date(first_day.setTime(first_day.getTime() + (day - 1)
-                                        * (1000 * 60 * 60 * 24))); 
+                                        * (1000 * 60 * 60 * 24)));
 
          var date_format = current_day.getUTCDate() + " "
          + months[current_day.getMonth()] + " "
-         + current_day.getFullYear(); 
-         
+         + current_day.getFullYear();
+
          display_result(date_format, "date_result");
        }
      }
 
 
-     
 
-     
+
+
 ////////////////////////////////////////////////////////////////
 // Display or hide Introduction
 ////////////////////////////////////////////////////////////////
@@ -10756,7 +10756,7 @@ function date_update_days() {
 // The Introduction gives somes explanation about Mesopotamian
 // mathematics. It must be hidden for people using MesoCalc
 // everyday (otherwise they will have to go down and down and down
-// before seing the calculator). But it is useful for people who 
+// before seing the calculator). But it is useful for people who
 // know nothing about Mesopotamian mathematics. So people can chose
 // whether they display it or not.
 
@@ -10777,7 +10777,7 @@ function hide_intro() {
 ////////////////////////////////////////////////////////////////
 
 
-// This function adds numbers. 
+// This function adds numbers.
 function addition_general(nb1, nb2, base) {
 
     // This algorithm is fully general:
@@ -10809,8 +10809,8 @@ function addition_general(nb1, nb2, base) {
 
     if (!nb1) nb1 = "0";
     if (!nb2) nb2 = "0";
-    var array_nb1 = nb1.split(separator).reverse(); 
-    var array_nb2 = nb2.split(separator).reverse(); 
+    var array_nb1 = nb1.split(separator).reverse();
+    var array_nb2 = nb2.split(separator).reverse();
     var array_result = new Array(); // The result array.
     var carry = 0;
 
@@ -10822,7 +10822,7 @@ function addition_general(nb1, nb2, base) {
 
         // How to handle the carry.
         carry = 0;
-        if (array_result[i] >= base) { 
+        if (array_result[i] >= base) {
             carry = 1;
             array_result[i] -= base;
         }
@@ -10866,8 +10866,8 @@ function subtraction_general(nb1, nb2, base) {
 
     if (!nb1) nb1 = "0";
     if (!nb2) nb2 = "0";
-    var array_nb1 = nb1.split(separator).reverse(); 
-    var array_nb2 = nb2.split(separator).reverse(); 
+    var array_nb1 = nb1.split(separator).reverse();
+    var array_nb2 = nb2.split(separator).reverse();
     var array_result = new Array(); // The result as an array.
     var carry = 0;
 
@@ -10879,7 +10879,7 @@ function subtraction_general(nb1, nb2, base) {
 
         // How to handle the carry.
         carry = 0;
-        if (array_result[i] < 0) { 
+        if (array_result[i] < 0) {
             carry = 1;
             array_result[i] += parseInt(base);
         }
@@ -10893,7 +10893,7 @@ function subtraction_general(nb1, nb2, base) {
     var result = array_result.reverse().join(separator);
 
     // Remove all useless ".0"s in the tail of the reversed list.
-    var head = new RegExp("^(0\\\.)+", "g"); 
+    var head = new RegExp("^(0\\\.)+", "g");
     // If there is such a tail, then it is replaced by nothing.
     if (head.test(result))
         result = result.replace(head, "");
@@ -10919,7 +10919,7 @@ function multiplication_general(nb1, nb2, base) {
     //
     //       1.57.01 (with indices i for the multiplicand)
     // x        1.03 (with indices j for the multiplier)
-    //  ------------ (here we get a bidimensional array for addition:)  
+    //  ------------ (here we get a bidimensional array for addition:)
     //       5.51.03 (we multiplied 1.57.01 by 3)
     // +  1.57.01.00 (we multiplied 1.57.01 by 1, and shifted it to the left)
     //  ------------
@@ -10928,8 +10928,8 @@ function multiplication_general(nb1, nb2, base) {
     // To do that, at some point, we need to fill a matrix like:
     // ( 3 51  5 * ...)  (with j lines)
     // ( *  1 57 1 ...)  (places marked by * will count as 0 during addition)
-    // ( *  * ...     )  
-    // ( *  *  * ...  )  
+    // ( *  * ...     )
+    // ( *  *  * ...  )
     //
     // To make things easier, the number 1.3 is represented as 3.1 (this
     // is why we use reverse() a lot).
@@ -10956,7 +10956,7 @@ function multiplication_general(nb1, nb2, base) {
 
     // Create the bidimensional array (the matrix) for addition.
     var addition = new Array();
-    for (j = 0; j < multiplier.length; j++) 
+    for (j = 0; j < multiplier.length; j++)
         addition[j] = new Array();
 
 
@@ -10970,8 +10970,8 @@ function multiplication_general(nb1, nb2, base) {
             // Multiply the i-th digit of the multiplicand by the j-th
             // digit of the multiplier, and store the result in the cell
             // (j, j+i).
-            addition[j][j+i] = 
-                String(parseInt(multiplicand[i]) * parseInt(multiplier[j]) 
+            addition[j][j+i] =
+                String(parseInt(multiplicand[i]) * parseInt(multiplier[j])
                        + carry); // In base 60, this will never be more
             //  than 59*59+1 (hence, it is always
             //  less than 2^53).
@@ -10999,7 +10999,7 @@ function multiplication_general(nb1, nb2, base) {
     // ( ... . . 0 )
     // ( ... . 0 0 )
     // ( ... 0 0 0 )
-    for (var j = 0; j < multiplier.length; j++) 
+    for (var j = 0; j < multiplier.length; j++)
         for (var i = 0; i < j; i++)
             addition[j][i] = "0";
 
@@ -11009,8 +11009,8 @@ function multiplication_general(nb1, nb2, base) {
     // Add the lines of the matrix, one by one. No number in this
     // computation will be greater than "base x 2 - 1".
     for (var j = 0; j < multiplier.length; j++) {
-        result = addition_general(result, 
-                                  addition[j].reverse().join(separator), 
+        result = addition_general(result,
+                                  addition[j].reverse().join(separator),
                                   base);
     }
 
@@ -11051,7 +11051,7 @@ function division_general(dividend, divisor, base) {
 
         // We feed the "small dividend" by removing the first digits
         // of the "big dividend".
-        small_dividend = small_dividend.replace(head, "") 
+        small_dividend = small_dividend.replace(head, "")
             + big_dividend.substr(0, 1);
         big_dividend = big_dividend.substr(1, big_dividend.length);
 
@@ -11063,8 +11063,8 @@ function division_general(dividend, divisor, base) {
             // Remember: "small_dividend" is really small! (less than
             // base^2). So the following operations are harmless up to
             // the base 2^26...
-            quotient = 
-                quotient 
+            quotient =
+                quotient
                 + Math.floor(parseInt(small_dividend) / parseInt(divisor));
             remainder = String(parseInt(small_dividend) % parseInt(divisor));
             small_dividend = remainder;
@@ -11098,7 +11098,7 @@ function power_general(nb, power_nb, base) {
     // notation: you get 1101, which is composed of four binary digits.
     // We will then need four powers: 2, 2*2, 4*4, 16*16. Take the
     // powers which are representend by 1 in the binary number: 16, 4,
-    // 2. Multiply them and you get the result. 
+    // 2. Multiply them and you get the result.
     //
     // The complexity should be something like n.log(n) instead of n.
 
@@ -11112,7 +11112,7 @@ function power_general(nb, power_nb, base) {
     var separator = base <= 10 ? "" : ".";
 
     // Remove useless head of numbers, such as 00412.
-    var head = new RegExp("^(0" + separator + ")+", "g"); 
+    var head = new RegExp("^(0" + separator + ")+", "g");
     nb.replace(head, "");
 
     // The binary expression of the power.
@@ -11183,7 +11183,7 @@ function base_to_base10(number, from) {
         // 2^53).
         puissance = "1";
         for (var j = 1; j < array_number.length -i; j++) {
-            puissance = 
+            puissance =
                 multiplication_deci(puissance, from); // For
                 // example, we use the decimal multiplication to compute
                 // powers of 60.
@@ -11192,8 +11192,8 @@ function base_to_base10(number, from) {
         // The number is decomposed into multiples of powers of the base (such
         // as 1000+700+20+9), which we finally just have to add.
         result = addition_general(result,
-                                  multiplication_deci(puissance, 
-                                                      array_number[i]), 
+                                  multiplication_deci(puissance,
+                                                      array_number[i]),
                                   to);
     }
 
@@ -11257,7 +11257,7 @@ function base10_to_base(number, base) {
             } else {
                 // Remember: "small_dividend" is really small! (less
                 // than 599). So the following operations are harmless.
-                quotient = 
+                quotient =
                     quotient + Math.floor(parseInt(small_dividend) / base);
                 remainder[i] = parseInt(small_dividend) % base;
                 small_dividend = remainder[i];
@@ -11278,7 +11278,7 @@ function base10_to_base(number, base) {
 
     // The result is the quotient (if not null) followed by the reversed
     // list of remainders.
-    var result = (quotient != 0 ? quotient + separator : "") 
+    var result = (quotient != 0 ? quotient + separator : "")
         + remainder.reverse().join(separator);
 
     // Return the number in absolute mode.
@@ -11411,7 +11411,7 @@ function deci2sexa(form) {
     var deci = form.input.value;
     var result;
 
-    // Some easter eggs linked with the history of MesoCalc... 
+    // Some easter eggs linked with the history of MesoCalc...
     switch (deci) {
     case "Christine":    // Christine Proust
     case "Cécile":       // Cécile Michel
@@ -11432,7 +11432,7 @@ function deci2sexa(form) {
 
     default:
         // The default behaviour is to convert the number if it is a deci.
-        result = 
+        result =
             is_int(deci) ? Deci_to_sexa_floating_or_absolute(deci) : not_deci;
     }
 
@@ -11514,7 +11514,7 @@ function deci2sexa(form) {
     //     From: Christine Proust <christine.proust@paris7.jussieu.fr>
     //     To: Baptiste Mélès <baptiste.meles@gmail.com>
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // Tu sauras tout sur le calcul sexagésimal avec des jetons lors de la
     // séance du 12 juin.
     // En attendant, j'ai bien évidemment programmé le calcul positionnel
@@ -11555,7 +11555,7 @@ function deci2sexa(form) {
     //     To: Baptiste Mélès <baptiste.meles@gmail.com>, pichaigneau
     //         <pichaigneau@laposte.net>
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // [-- Attachement #1 --]
     // [-- Type : text/plain, Codage : 8bit, Taille : 1,8K --]
     //
@@ -11586,7 +11586,7 @@ function deci2sexa(form) {
     //     To: Christine Proust <christine.proust@paris7.jussieu.fr>
     //     CC: pichaigneau <pichaigneau@laposte.net>
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // Chère Christine, cher Pierre,
     //
     // Parfait, cela m'amusera beaucoup !
@@ -11618,7 +11618,7 @@ function deci2sexa(form) {
     //     To: Baptiste Mélès <baptiste.meles@gmail.com>
     //     CC: pichaigneau <pichaigneau@laposte.net>
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // Géant! mille mercis.
     // chr
 
@@ -11628,7 +11628,7 @@ function deci2sexa(form) {
     //     To: pichaigneau@laposte.net
     //     CC: Baptiste Mélès <baptiste.meles@gmail.com>
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // Va pour GPL. J'ignore totalement de quoi il s'agit, mais
     // renseignements pris auprès de Wikipedia, l'idée me paraît
     // sympathique. chr
@@ -11639,7 +11639,7 @@ function deci2sexa(form) {
     //     To: Christine Proust <christine.proust@paris7.jussieu.fr>
     //     CC: pichaigneau@laposte.net
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // Chère Christine, cher Pierre,
     //
     // Pardon, j'ai été un peu laconique pour la licence... Voici donc
@@ -11676,7 +11676,7 @@ function deci2sexa(form) {
     //     To: Christine Proust <christine.proust@paris7.jussieu.fr>
     //     CC: pichaigneau@laposte.net
     //     Subject: Re: Classiques des mathématiques mésopotamiennes
-    // 
+    //
     // Chère Christine, cher Pierre,
     //
     // Et voici une première version de la calculatrice mésopotamienne !
@@ -11790,7 +11790,7 @@ function addition(form) {
 
         // Every empty field is treated as 0 in "sexa", but displayed as
         // empty in "addenda[i]".
-        if (!sexa) 
+        if (!sexa)
             sexa = "0";
 
         addenda[i] = form["input" + i].value;
@@ -11818,16 +11818,16 @@ function addition(form) {
 
 
     // Display the result in a table.
-    var result = "<p><table class=\"center\">" 
+    var result = "<p><table class=\"center\">"
         + "<tr><th>Addition</th></tr>";
     for (var i = 1; i < nb_additions; i++) {
-        result = addenda[i] ? 
-            result + '<tr><td align="right"> ' 
+        result = addenda[i] ?
+            result + '<tr><td align="right"> '
             + addenda[i]
             + '</td></tr>'
             : result;
     }
-    result += '<tr><td></td></tr><tr><td align="right"><strong>= ' + addenda[0] 
+    result += '<tr><td></td></tr><tr><td align="right"><strong>= ' + addenda[0]
         + '</strong></td></tr>'
         + "</table></p>";
     document.getElementById('tableau_addition').innerHTML = result;
@@ -11924,7 +11924,7 @@ function soustraction(form) {
         // but treated as 0.
         var sexa = subtrahenda[i] ? subtrahenda[i] : "0";
 
-        if (less_equal_sexa(sexa, subtrahenda[0])) { 
+        if (less_equal_sexa(sexa, subtrahenda[0])) {
             subtrahenda[0] = subtraction_sexa(subtrahenda[0], sexa);
         } else {
             // Abort if the result is negative.
@@ -11951,17 +11951,17 @@ function soustraction(form) {
     document.getElementById('nouv_soustraction').innerHTML = contenu;
 
     // Display the computation in a table.
-    var result = "<p><table class=\"center\">" 
+    var result = "<p><table class=\"center\">"
         + "<tr><th>Subtraction</th></tr>";
     for (var i = 1; i < nb_soustractions; i++) {
         result = subtrahenda[i] ?
-            result + '<tr><td align="right"> ' 
+            result + '<tr><td align="right"> '
             + (subtrahenda[i] ? subtrahenda[i] : "0")
             + '</td></tr>'
         : result;
     }
-    result += '<tr><td></td></tr><tr><td align="right"><strong>= ' 
-        + subtrahenda[0] 
+    result += '<tr><td></td></tr><tr><td align="right"><strong>= '
+        + subtrahenda[0]
         + '</strong></td></tr>'
         + "</table></p>";
     document.getElementById('tableau_soustraction').innerHTML = result;
@@ -12061,8 +12061,8 @@ function multiplication(form) {
         var sexa = form["input" + i].value;
 
         multiplicanda[i] = form["input" + i].value;
-        multiplicanda[0] = 
-            multiplication_sexa(multiplicanda[0], 
+        multiplicanda[0] =
+            multiplication_sexa(multiplicanda[0],
                                 multiplicanda[i] ? multiplicanda[i] : "1");
     }
 
@@ -12081,17 +12081,17 @@ function multiplication(form) {
 
     document.getElementById('nouv_multiplication').innerHTML = contenu;
 
-    var result = "<p><table class=\"center\">" 
+    var result = "<p><table class=\"center\">"
         + "<tr><th>Multiplication</th></tr>";
     for (var i = 1; i < nb_multiplications; i++) {
-        result = multiplicanda[i] ? 
-            result + '<tr><td align="right"> ' 
+        result = multiplicanda[i] ?
+            result + '<tr><td align="right"> '
             + multiplicanda[i]
             + '</td></tr>'
             : result;
     }
-    result += '<tr><td></td></tr><tr><td align="right"><strong>= ' 
-        + multiplicanda[0] 
+    result += '<tr><td></td></tr><tr><td align="right"><strong>= '
+        + multiplicanda[0]
         + '</strong></td></tr>'
         + "</table></p>";
 
@@ -12137,12 +12137,12 @@ function division_sexa_absolute(dividend, divisor) {
     // is because my division_general algorithm is still
     // not so general... Fortunately, this is harmless,
     // because we do not use big numbers.
-    division_general(Sexa_vers_deci(dividend), 
+    division_general(Sexa_vers_deci(dividend),
                      Sexa_vers_deci(divisor),
                      "10");
     result["quotient"] = Deci_to_sexa_absolute(result_deci["quotient"]);
     result["remainder"] = Deci_to_sexa_absolute(result_deci["remainder"]);
-    
+
 
     // The result is a hash table: it contains both result["quotient"]
     // and result["remainder"].
@@ -12201,8 +12201,8 @@ function quotient_deci(dividend, divisor) {
 // JavaScript).
 function remainder_sexa(dividend, divisor) {
 
-    var result = 
-        Deci_to_sexa_absolute(division_general(Sexa_vers_deci(dividend), 
+    var result =
+        Deci_to_sexa_absolute(division_general(Sexa_vers_deci(dividend),
                                                Sexa_vers_deci(divisor),
                                                "10")["remainder"]);
 
@@ -12232,7 +12232,7 @@ function prime_list_to_igi(prime_list) {
     //
     // The idea is that we have a lottery grid, which is formatted like
     // the following:
-    // 
+    //
     // (2 2 3 5)
     // (2 2 3 5)
     // (2 2 3 5)
@@ -12240,7 +12240,7 @@ function prime_list_to_igi(prime_list) {
     // (2 2 3 5)
     // (2 2 3 5)
     //  ...
-    // 
+    //
     // Now, we take the regular number of which we are searching the
     // reciprocal. We take the list of its prime factors: say 2, 2, 2,
     // 2, 2, 2, 2, 3, 3, 5, 5, 5 for the number 40.0.0 (= 144000). We
@@ -12253,7 +12253,7 @@ function prime_list_to_igi(prime_list) {
     // (2 2 3 5)
     // (2 2 3 5)
     //  ...
-    // 
+    //
     // How many lines do we need? Four. So, in the first four lines, we
     // compute the product of all non-checked numbers, which is 2*3*3*5
     // = 1.30.
@@ -12262,7 +12262,7 @@ function prime_list_to_igi(prime_list) {
     // of 60, for it is a power of the number encoded by each of these
     // lines, which is 2*2*3*5 = 60.
     //
-    // In abstract terms: 
+    // In abstract terms:
     //
     // Let nb2 (resp. nb3, nb5) be the number of 2's (resp. of 3's, of
     // 5's) in the list of prime factors of a regular number. The
@@ -12284,7 +12284,7 @@ function prime_list_to_igi(prime_list) {
     // How many lines do we need?
     lines = Math.ceil(Math.max(Math.max(nb2/2, nb3), nb5));
 
-    // Compute the respective powers of 2, 3 and 5 of the reciprocal number. 
+    // Compute the respective powers of 2, 3 and 5 of the reciprocal number.
     var power2 = Deci_to_sexa_absolute(2*lines - nb2);
     var power3 = Deci_to_sexa_absolute(lines - nb3);
     var power5 = Deci_to_sexa_absolute(lines - nb5);
@@ -12327,15 +12327,15 @@ function simplif_fraction(numerator, denominator) {
 
     // We try all numbers which are less than the minimum of the
     // numerator and the denominator.
-    for (var i = "2"; 
-         less_equal_sexa(i, 
-                         min_sexa(String(numerator), 
+    for (var i = "2";
+         less_equal_sexa(i,
+                         min_sexa(String(numerator),
                                   String(denominator)));
          i = addition_sexa(i, "1")) {
 
         // We divide both the numerator and the denominator by their
         // common divisor, if any.
-        while (remainder_sexa(numerator, i) == "0" 
+        while (remainder_sexa(numerator, i) == "0"
                && remainder_sexa(denominator, i) == "0") {
             numerator = quotient_sexa_absolute(numerator, i);
             denominator = quotient_sexa_absolute(denominator, i);
@@ -12363,7 +12363,7 @@ function simplif_fraction(numerator, denominator) {
 // This function initializes the addition formular.
 function clear_quotient(form) {
 
-    form.reset(); 
+    form.reset();
     document.getElementById('quotient').innerHTML = "";
     document.getElementById('quotient_input1').focus();
 }
@@ -12374,9 +12374,9 @@ function quotient(form) {
     var dividend = form.input1.value;
     var divisor = form.input2.value;
 
-    var result = 
-        (is_sexa(dividend) && is_sexa(divisor)) ? 
-        ((is_regular(divisor)) ? floating(quotient_sexa(dividend, divisor)) 
+    var result =
+        (is_sexa(dividend) && is_sexa(divisor)) ?
+        ((is_regular(divisor)) ? floating(quotient_sexa(dividend, divisor))
          : "Divisor is not regular.")
     : not_sexas;
 
@@ -12399,8 +12399,8 @@ function regle_trois(form) {
         var deci2 = Sexa_vers_deci(ara2);
         var deci3 = Sexa_vers_deci(divisor);
 
-        form.output.value = is_regular(divisor) ? 
-            floating(quotient_sexa(multiplication_sexa(ara1, ara2), divisor)) 
+        form.output.value = is_regular(divisor) ?
+            floating(quotient_sexa(multiplication_sexa(ara1, ara2), divisor))
             : "First number is not regular.";
     }
 }
@@ -12419,9 +12419,9 @@ function inverse(form) {
         // We take the list of prime factors and then use it to compute
         // the reciprocal number. Otherwise, we would have to compute
         // two times the prime factors.
-        if (prime_list = is_regular(sexa)) 
+        if (prime_list = is_regular(sexa))
             result = prime_list_to_igi(prime_list);
-        else 
+        else
             result = nu;
 
     } else
@@ -12479,13 +12479,13 @@ function nth_root(sexa, root) {
 
 
     // The list of prime factors.
-    var primes = prime_factors(sexa); 
+    var primes = prime_factors(sexa);
     var result = "1";
 
     // Count the occurrences of each prime factor.
     var counts = {};
-    counts["2"] = 0; 
-    counts["3"] = 0; 
+    counts["2"] = 0;
+    counts["3"] = 0;
     counts["5"] = 0;
 
     for (var i = 0; i < primes.length; i++) {
@@ -12501,7 +12501,7 @@ function nth_root(sexa, root) {
     // which is a multiple of the root. Otherwise, the result is
     // undefined.
     for (var key in counts) {
-        if (key != "2" && key != "3" && key != "5" 
+        if (key != "2" && key != "3" && key != "5"
             && counts[key] % root != 0)
             return nu;
     }
@@ -12510,7 +12510,7 @@ function nth_root(sexa, root) {
     // other modulo the root. Otherwise, the result is undefined.
     if (counts["3"] % root != counts["5"] % root) {
         return nu;
-    } 
+    }
 
            // If the number of 3's (and of 5's) is not a multiple of the
            // root, and if in floating mode, then multiply the number by
@@ -12528,14 +12528,14 @@ function nth_root(sexa, root) {
 
     // Now the numbers of 3's and 5's are multiple of the root. Is it
     // still the case for 2's? If not, the result is undefined.
-    if (counts["2"] % root != 0) 
+    if (counts["2"] % root != 0)
         return nu;
 
     // Since everything seems to go well, now we compute the nth root.
     for (var key in counts) {
-        result = 
+        result =
             multiplication_sexa(
-                result, 
+                result,
                 power_sexa(key,
                            Deci_to_sexa_absolute(counts[key] / root)));
     }
@@ -12580,7 +12580,7 @@ function cubic_root_sexa(sexa) {
 function square(form) {
 
     var sexa = form.input.value;
-    var result = is_sexa(sexa) ? 
+    var result = is_sexa(sexa) ?
         floating_or_absolute(power_sexa(sexa, "2")) : not_sexa;
 
     display_result(result, "square");
@@ -12601,7 +12601,7 @@ function square_root(form) {
 function cube(form) {
 
     var sexa = form.input.value;
-    var result = is_sexa(sexa) ? 
+    var result = is_sexa(sexa) ?
         floating_or_absolute(power_sexa(sexa, "3")) : not_sexa;
 
     display_result(result, "cube");
@@ -12637,7 +12637,7 @@ function is_regular(sexa) {
     // Let us take each prime factor of 60 (i. first 5, then 3, finally 2).
     for (var i = 0; i < divisors.length; i++) {
 
-        do { 
+        do {
 
             // Try to divide the sexa by the current prime factor of 60.
             division = division_sexa_absolute(sexa, divisors[i]);
@@ -12650,16 +12650,16 @@ function is_regular(sexa) {
                     factors["nb5"]++;
                     break;
 
-                case "2": 
+                case "2":
                     factors["nb2"]++;
                     break;
 
-                case "3": 
+                case "3":
                     factors["nb3"]++;
                     break;
 
                 case "5":
-                    factors["nb5"]++;                   
+                    factors["nb5"]++;
                     break;
                 }
 
@@ -12671,7 +12671,7 @@ function is_regular(sexa) {
 
     if (sexa == "1")
         return factors;
-    else 
+    else
         return false;
 }
 
@@ -12686,7 +12686,7 @@ function prime_factors(sexa) {
 
     // The square of the divisor must be less than the sexa (except in
     // the case where the sexa itself is a prime number, see below).
-    while (less_equal_sexa(multiplication_sexa_absolu(divisor, divisor), 
+    while (less_equal_sexa(multiplication_sexa_absolu(divisor, divisor),
                            sexa)) {
 
         // Try to divide the sexa by the divisor.
@@ -12698,17 +12698,17 @@ function prime_factors(sexa) {
         if (division["remainder"] == "0")  {
             result[i++] = divisor;
             sexa = division["quotient"];
-        }    
+        }
         else { // If the sexa is not a multiple of the divisor, try the
             // following divisor.
-            divisor = addition_sexa(divisor, "1");             
+            divisor = addition_sexa(divisor, "1");
         }
     }
 
     // If you have reached the square root of the sexa without having
     // "1" as the result, then the sexa itelf is a prime number.
     if (sexa != "1")
-        result[i] = sexa; 
+        result[i] = sexa;
 
     // Now, return the array of all prime factors.
     return result;
@@ -12721,7 +12721,7 @@ function prime_factors(sexa) {
 function gcd(sexa1, sexa2) {
     var sexa1_factors = new Array();
     var sexa2_factors = new Array();
-    var gcd_factors = new Array(); 
+    var gcd_factors = new Array();
     var result = "1";
 
     // Take both numbers as ordered lists of prime factors.
@@ -12734,20 +12734,20 @@ function gcd(sexa1, sexa2) {
     // the smallest is thrown away. If they are equal, this factor is a
     // factor of the GCD.
 
-    while (sexa1_factors.length > 0 && sexa2_factors.length > 0) { 
-        if (less_equal_sexa(sexa1_array[0], sexa2_array[0]) 
-            && !less_equal_sexa(sexa2_array[0], sexa1_array[0])) { 
-            sexa1_factors.shift(); 
-        }
-        else if (less_equal_sexa(sexa2_array[0], sexa1_array[0]) 
-                 && !less_equal_sexa(sexa1_array[0], sexa2_array[0])) {
-            sexa2_factors.shift(); 
-        } 
-        else { 
-            gcd_factors.push(sexa1_factors[0]); 
+    while (sexa1_factors.length > 0 && sexa2_factors.length > 0) {
+        if (less_equal_sexa(sexa1_array[0], sexa2_array[0])
+            && !less_equal_sexa(sexa2_array[0], sexa1_array[0])) {
             sexa1_factors.shift();
-            sexa2_factors.shift(); 
-        } 
+        }
+        else if (less_equal_sexa(sexa2_array[0], sexa1_array[0])
+                 && !less_equal_sexa(sexa1_array[0], sexa2_array[0])) {
+            sexa2_factors.shift();
+        }
+        else {
+            gcd_factors.push(sexa1_factors[0]);
+            sexa1_factors.shift();
+            sexa2_factors.shift();
+        }
     }
 
     // Finally multiply the prime factors of the GCD to get it.
@@ -12767,13 +12767,13 @@ function gcd(sexa1, sexa2) {
 // This function computes the regular approximation of a number. For
 // instance, the output for 7 should be :
 //
-// "6", 
-// "6.45", 
-// "6.56.40", 
+// "6",
+// "6.45",
+// "6.56.40",
 // ...
-// "7.6.40", 
-// "7.12", 
-// "8" 
+// "7.6.40",
+// "7.12",
+// "8"
 //
 // The problem is that we have to choose between space and time. On my
 // computer (in 2016), approximations are quickly computed until three
@@ -12819,7 +12819,7 @@ function regular_approximation (form) {
         // in bold font.
 
         if (sup.length == 0) {
-            tableau += "<tr><td><strong>" 
+            tableau += "<tr><td><strong>"
                 + inf[i] + "</strong></td></tr>\n";
         } else {
 
@@ -12827,7 +12827,7 @@ function regular_approximation (form) {
             // approximated number is not regular. We thus have to
             // compute if its nearest regular approximation is the last
             // lower or the first upper number.
- 
+
             var nb1 = inf[i];
             var nb2 = sup[0];
             var nb_places = Math.max(nb1.split(".").length,
@@ -12844,20 +12844,20 @@ function regular_approximation (form) {
                 nb2 += ".0";
             }
 
-            if (!less_equal_sexa(subtraction_sexa(sexa, nb2), 
+            if (!less_equal_sexa(subtraction_sexa(sexa, nb2),
                                  subtraction_sexa(sexa, nb1))) {
-                tableau += "<tr><td><strong>" + inf[i] 
+                tableau += "<tr><td><strong>" + inf[i]
                     + "</strong></td></tr>\n";
                 tableau += "<tr><td>" + sup[0] + "</td></tr>\n";
-            } else if (!less_equal_sexa(subtraction_sexa(sexa, nb1), 
+            } else if (!less_equal_sexa(subtraction_sexa(sexa, nb1),
                                         subtraction_sexa(sexa, nb2))) {
                 tableau += "<tr><td>" + inf[i] + "</td></tr>\n";
-                tableau += "<tr><td><strong>" + sup[0] 
+                tableau += "<tr><td><strong>" + sup[0]
                     + "</strong></td></tr>\n";
             } else {
-                tableau += "<tr><td><strong>" + inf[i] 
+                tableau += "<tr><td><strong>" + inf[i]
                     + "</strong></td></tr>\n";
-                tableau += "<tr><td><strong>" + sup[0] 
+                tableau += "<tr><td><strong>" + sup[0]
                     + "</strong></td></tr>\n";
             }
 
@@ -12877,7 +12877,7 @@ function regular_approximation (form) {
 
 
 
-// By default, the present function is NOT used by MesoCalc. 
+// By default, the present function is NOT used by MesoCalc.
 
 function regular_approximation_on_the_fly (sexa) {
     var approx_list = new Array();
@@ -13019,8 +13019,8 @@ function regular_approximation_with_database (sexa, nb_digits) {
         if (!less_equal_sexa_floating("2", sexa)) {
             inf.push("1");
         } else {
-            if (!less_equal_sexa_floating(sexa, 
-                                          regulars_list[regulars_list.length 
+            if (!less_equal_sexa_floating(sexa,
+                                          regulars_list[regulars_list.length
                                                         - 1])) {
                 sup.unshift("1");
             }
@@ -13116,7 +13116,7 @@ function regular_numbers_interval (sexa1, sexa2) {
         lower_bound = nearest_upper1 - 1;
     }
 
-    if (less_equal_sexa_floating(sexa2, "1") 
+    if (less_equal_sexa_floating(sexa2, "1")
         && less_equal_sexa_floating("1", sexa2)) {
         upper_bound = regulars_list.length - 1;
     } else {
@@ -13184,7 +13184,7 @@ function gcd_form(form) {
     var sexa1 = form.input1.value;
     var sexa2 = form.input2.value;
 
-    var result = (is_sexa(sexa1) && is_sexa(sexa2)) ? 
+    var result = (is_sexa(sexa1) && is_sexa(sexa2)) ?
         gcd(sexa1, sexa2) : not_sexas;
 
     display_result(result, "gcd");
@@ -13200,9 +13200,9 @@ function gcd_form(form) {
 // Minimum of two numbers.
 function min_general(nb1, nb2, base) {
 
-    if (less_equal(nb1, nb2, base)) 
+    if (less_equal(nb1, nb2, base))
         return nb1;
-    else 
+    else
         return nb2;
 }
 
@@ -13252,11 +13252,11 @@ function less_equal(nb1, nb2, base) {
     if (array_nb1.length < array_nb2.length) { // If the second number
         // is longer than the first.
         return true;
-    } 
+    }
     if (array_nb1.length > array_nb2.length) { // If the second number
         // is longer than the first.
         return false;
-    } 
+    }
 
 
     // If both numbers have the same number of digits.
@@ -13271,7 +13271,7 @@ function less_equal(nb1, nb2, base) {
 
     // If the two numbers are equal.
     return true;
-    
+
 }
 
 
@@ -13312,7 +13312,7 @@ function less_equal_sexa_floating (nb1, nb2) {
             for (var i = 0; i < nb2_places - nb1_places; i++) {
                 nb1 = nb1.concat(".0");
             }
-        } 
+        }
         else {
             for (var i = 0; i < nb1_places - nb2_places; i++) {
                 nb2 = nb2.concat(".0");
@@ -13351,7 +13351,7 @@ function mult_table(form) {
                     + multiplication_sexa(sexa, i) // Floating or absolute.
                     + "</td></tr>";
 
-                i =  less_equal_sexa(i, "19") ? i = addition_sexa(i, "1") 
+                i =  less_equal_sexa(i, "19") ? i = addition_sexa(i, "1")
                     : i = addition_sexa(i, "10");
             }
 
@@ -13370,20 +13370,20 @@ function square_table(form) {
         result = "";
     } else {
         affiche_table_carres = true;
-        var result = '<p><table class=\"center\">' 
+        var result = '<p><table class=\"center\">'
             + '<th colspan="2">Table of squares</th>';
 
         for (var i = "1";
              less_equal_sexa(i, "59");
              i = addition_sexa(i, "1")) {
 
-            result += "<tr><td>" 
-                + floating_or_absolute(i) 
+            result += "<tr><td>"
+                + floating_or_absolute(i)
                 + '</td><td align="right">'
                 + floating(multiplication_sexa(i, i))
                 + "</td></tr>";
         }
-        
+
         result += "</table></p>";
     }
     document.getElementById('square_tableau').innerHTML = result;
@@ -13397,7 +13397,7 @@ function square_root_table(form) {
         result = "";
     } else {
         affiche_table_racines_carrees = true;
-        var result = "<p><table class=\"center\">" 
+        var result = "<p><table class=\"center\">"
             + '<th colspan="2">Table of square roots</th>';
         var entrees = new Array;
 
@@ -13406,7 +13406,7 @@ function square_root_table(form) {
         // mathématiques de Nippur_, 2007, p. 323)
         var i = "1";
         while (less_equal_sexa(i, power_sexa("1.0", "4"))) {
-            result += "<tr><td>" 
+            result += "<tr><td>"
                 + floating_or_absolute(multiplication_sexa_absolu(i, i))
                 + '</td><td align="right">'
                 + floating_or_absolute(i)
@@ -13415,7 +13415,7 @@ function square_root_table(form) {
             i = less_equal_sexa(i, "1.0") ? addition_sexa(i, "1")
                 : addition_sexa(multiplication_sexa_absolu(i, "1.0"), "1");
         }
-        
+
         result += "</table></p>";
     }
     document.getElementById('square_root_tableau').innerHTML = result;
@@ -13430,12 +13430,12 @@ function cube_root_table(form) {
         result = "";
     } else {
         affiche_table_racines_cubiques = true;
-        var result = "<p><table class=\"center\">" 
+        var result = "<p><table class=\"center\">"
             + '<th colspan="2">Table of cube roots</th>';
 
         var i = "1";
         while (less_equal_sexa(i, "40")) {
-            result += "<tr><td>" 
+            result += "<tr><td>"
                 + floating(power_sexa(i, "3"))
                 + '</td><td align="right">'
                 + floating_or_absolute(i)
@@ -13444,7 +13444,7 @@ function cube_root_table(form) {
             i = less_equal_sexa(i, "19") ? addition_sexa(i, "1")
                 : addition_sexa(i, "10");
         }
-        
+
         result += "</table></p>";
     }
     document.getElementById('cube_root_tableau').innerHTML = result;
@@ -13478,7 +13478,7 @@ function geom(form) {
                 + "<tr><th>Term</th><th>Value</th>"
                 + "<th>Reciprocal</th></tr>";
 
-            for (var i = "0"; 
+            for (var i = "0";
                  less_equal_sexa(i, Deci_to_sexa_absolute(terms));
                  i = addition_sexa(i, "1")) {
 
@@ -13512,7 +13512,7 @@ function inverse_table(form) {
         result = "";
     } else {
         affiche_table_inverse = true;
-        var result = '<p><table class="center">' 
+        var result = '<p><table class="center">'
             + '<tr><th colspan="2">Table of reciprocals</th></tr>';
 
         for (sexa = "2";
@@ -13523,8 +13523,8 @@ function inverse_table(form) {
             // less_equal_sexa() and the is_regular(). Otherwise, you
             // would compute the prime factors of useless numbers.
             // Indeed, computing the prime factors takes a lot of time.
-            if ((less_equal_sexa(sexa, "1.0") 
-                 || sexa == "1.04" || sexa == "1.4" 
+            if ((less_equal_sexa(sexa, "1.0")
+                 || sexa == "1.04" || sexa == "1.4"
                  || sexa == "1.21"
                 ) && (prime_list = is_regular(sexa))) {
 
@@ -13560,10 +13560,10 @@ function regular_liste(form) {
                 sexa2 = tmp;
             }
 
-            result = '<p><table class="center">' 
+            result = '<p><table class="center">'
                 + '<tr> '
                 + '<th>Regular numbers between '
-                + sexa1 + ' and ' + sexa2 
+                + sexa1 + ' and ' + sexa2
                 + '</th></tr>';
 
             for (var sexa = sexa1;
@@ -13571,7 +13571,7 @@ function regular_liste(form) {
                  sexa = addition_sexa(sexa, "1")) {
 
                 if (is_regular(sexa)) {
-                    result += "<tr><td>" + floating_or_absolute(sexa) 
+                    result += "<tr><td>" + floating_or_absolute(sexa)
                         + "</td>" + '</tr>';
                 }
             }
@@ -13596,9 +13596,9 @@ function regular_inverse_liste(form) {
 
         var tableau = '<p><table class="center">\n';
         tableau += '<tr> '
-            + '<th colspan="2">Regular numbers and' 
+            + '<th colspan="2">Regular numbers and'
             + ' their reciprocal between '
-            + sexa1 + ' and ' + sexa2 
+            + sexa1 + ' and ' + sexa2
             + '</th></tr>'
             +        "<tr><th>Regular numbers</th> "
             + " <th>Reciprocal numbers</th></tr> ";
@@ -13639,21 +13639,21 @@ function conversion_to_lower_unit(values, unit_table) {
 
     // Computations are performed in sexagesimal, so there is
     // practically no limit for big numbers.
-    
+
     var i;
     var result = "0";
 
     for (i = 0; i < values.length; i++){
 
         // Take all values as sexagesimal numbers.
-        values[i] = values[i] ? 
-            (is_sexa(values[i]) ? 
+        values[i] = values[i] ?
+            (is_sexa(values[i]) ?
              values[i] : Deci_to_sexa_absolute(values[i])) :
         "0";
 
         // Convert them into the lower unit.
         result = multiplication_sexa_absolu(
-            addition_sexa(result, 
+            addition_sexa(result,
                           values[i]),
             unit_table[i][1]);
     }
@@ -13708,7 +13708,7 @@ function sexa_to_deci_array (sexa_array) {
 
     // This function converts an array of sexagesimal values into an
     // array of decimal values.
-    
+
     var deci_array = new Array();
     var i;
 
@@ -13725,7 +13725,7 @@ function deci_to_sexa_array (deci_array) {
 
     // This function converts an array of decimal values into an array
     // of sexagesimal values.
-    
+
     var sexa_array = new Array();
     var i;
 
@@ -13755,14 +13755,14 @@ function format_measure_without_fractions(values, unit_table) {
     var i = values.length - 1;
     values[i] = conversion_to_lower_unit(values, unit_table);
     i--;
-    
+
     while (i >= 0) {
         values[i] = "0";
         i--;
     }
 
     // Then convert everything into bigger units.
-    
+
         for (i = values.length - 1; i > 0; i--) {
             var ratio = unit_table[i - 1][1];
 
@@ -13774,7 +13774,7 @@ function format_measure_without_fractions(values, unit_table) {
                 values[i - 1] = addition_sexa(values[i - 1], quotient);
             }
         }
-    
+
     return values;
 }
 
@@ -13797,10 +13797,10 @@ function susi2longueur(small_unit) {
 function measure_with_fractions (values, unit_table) {
 
     var result = "";
-    
+
     if (conversion_to_lower_unit(values, unit_table) == "0") {
         result = "0 " + unit_table[unit_table.length - 1][0];
-    } else { 
+    } else {
 
         for (var i = 0; i < values.length - 1; i++) {
 
@@ -13815,7 +13815,7 @@ function measure_with_fractions (values, unit_table) {
                 }
             }
 
-            
+
             // There are sixths only is the ratio is dividable by 6.
             var ratio = unit_table[i][1];
 
@@ -13830,7 +13830,7 @@ function measure_with_fractions (values, unit_table) {
                     current_unit += " ";
                 }
 
-            } 
+            }
 
             if (current_unit != "") {
                 current_unit += unit_table[i][0] + " ";
@@ -13840,11 +13840,11 @@ function measure_with_fractions (values, unit_table) {
         }
 
 
-        result += (values[values.length - 1] != "0" ? 
-                   values[values.length - 1] + " " 
+        result += (values[values.length - 1] != "0" ?
+                   values[values.length - 1] + " "
                    + unit_table[values.length - 1][0]
                    + " "
-                   : ""); 
+                   : "");
     }
 
     return result;
@@ -13857,7 +13857,7 @@ function length_with_fractions (values) {
 
     var result = measure_with_fractions(values, length_unit);
     return result;
-    
+
 }
 
 
@@ -13951,7 +13951,7 @@ function se2volume(se) {
 // This function apprixmates Mesopotamian mesures with metric units.
 
 function approx_measure(small_unit, ratio_to_metric_unit,
-                        ratio_to_metric_decimals, name_of_metric_unit, 
+                        ratio_to_metric_decimals, name_of_metric_unit,
                         number_of_decimals) {
 
     // Take the number as a string.
@@ -13972,16 +13972,16 @@ function approx_measure(small_unit, ratio_to_metric_unit,
 
     // Computation of the decimals.
     var metric_decimals = ""
-        + Math.round((remaining_small_unit 
-                      * ratio_to_metric_decimals 
+        + Math.round((remaining_small_unit
+                      * ratio_to_metric_decimals
                       * scale) / scale);
 
     // Remove trailing zeros.
-    var tail = new RegExp("0+$", ""); 
+    var tail = new RegExp("0+$", "");
 
     // Return the result.
     var result = metric_unit.toLocaleString()
-        + (metric_decimals == 0 ? "" : "." 
+        + (metric_decimals == 0 ? "" : "."
            + (zeros + metric_decimals).slice(-number_of_decimals).replace(tail, ""))
         + " " + name_of_metric_unit + (metric_unit >= 2 ? "s" : "");
 
@@ -13995,7 +13995,7 @@ function display_measure_with_metric_approx(measure, approx) {
         + measure
         + "<br/>"
         + '<span class="highlight">'
-        + "(≈ " 
+        + "(≈ "
         + approx
         + ")"
         + '</span>'
@@ -14026,10 +14026,10 @@ function display_length_with_metric_approx (susi) {
 
 function add_longueurs(form) {
 
-    var length1 = [form.danna1.value, 
-                   form.us1.value, 
+    var length1 = [form.danna1.value,
+                   form.us1.value,
                    form.ninda1.value,
-                   form.kus1.value, 
+                   form.kus1.value,
                    form.susi1.value];
 
     var length2 = [form.danna2.value,
@@ -14071,7 +14071,7 @@ function soustr_longueurs(form) {
     if (less_equal_sexa(susi2, susi1)) {
         var result_susi = subtraction_sexa(susi1, susi2);
         result = display_length_with_metric_approx(result_susi);
-    } 
+    }
     else {
         result = negative;
     }
@@ -14097,7 +14097,7 @@ function mult_longueur_form(form) {
 
     var scalaire = form.scalaire.value ? form.scalaire.value : "1";
 
-    var result_susi = multiplication_sexa_absolu(longueur2susi(length), 
+    var result_susi = multiplication_sexa_absolu(longueur2susi(length),
                                                  scalaire);
 
     var result = display_length_with_metric_approx(result_susi);
@@ -14119,11 +14119,11 @@ function approx_surface(se, reste) {
     if (reste != "" || reste != 0) {
         var fraction = new Array();
         fraction = reste.split("/");
-        square_susi += 12 * (fraction[0] == "" ? 0 : 
+        square_susi += 12 * (fraction[0] == "" ? 0 :
                              parseInt(fraction[0]) / parseInt(fraction[1]));
     }
 
-    var result = approx_measure(square_susi, 3600, 100000/36, 
+    var result = approx_measure(square_susi, 3600, 100000/36,
                                 "square meter", 7);
 
     return result;
@@ -14207,7 +14207,7 @@ function mult_surface_form(form) {
     var scalaire = form.scalaire.value ? form.scalaire.value : "1"
 
     var result_se = multiplication_sexa_absolu(
-                surface2se(surface), 
+                surface2se(surface),
                 scalaire);
 
     result = display_surface_with_metric_approx(result_se, "");
@@ -14232,8 +14232,8 @@ function mult_longueurs(form) {
                    form.kus2.value,
                    form.susi2.value];
 
-    var result = 
-        mult_deux_longueurs(longueur2susi(length1), 
+    var result =
+        mult_deux_longueurs(longueur2susi(length1),
                             longueur2susi(length2));
 
     display_result(result, "mult_two_lengths_output");
@@ -14275,11 +14275,11 @@ function approx_volume(se, reste) {
     if (reste != "" || reste != 0) {
         var fraction = new Array();
         fraction = reste.split("/");
-        cubic_susi += 360 * (fraction[0] == "" ? 0 : 
+        cubic_susi += 360 * (fraction[0] == "" ? 0 :
                              parseInt(fraction[0]) / parseInt(fraction[1]));
     }
 
-    var result = approx_measure(cubic_susi, 216000, 10000/216, 
+    var result = approx_measure(cubic_susi, 216000, 10000/216,
                                 "cube meter", 7);
 
     return result;
@@ -14294,7 +14294,7 @@ function display_volume_with_metric_approx (se, remainder) {
     result = remainder ?
         result.replace("<br/>", " " + remainder + "<br/>")
         : result;
-    
+
     return result;
 }
 
@@ -14313,7 +14313,7 @@ function add_volumes(form) {
                     form.gin2.value,
                     form.se2.value];
 
-    var result_se = addition_sexa(volume2se(volume1), 
+    var result_se = addition_sexa(volume2se(volume1),
                           volume2se(volume2));
 
     result = display_volume_with_metric_approx(result_se, "");
@@ -14360,7 +14360,7 @@ function mult_volume_form(form) {
     var scalaire = form.scalaire.value ? form.scalaire.value : "1";
 
     var result_se = multiplication_sexa_absolu(
-        volume2se(volume), 
+        volume2se(volume),
         scalaire);
 
     result = display_volume_with_metric_approx(result_se, "");
@@ -14405,9 +14405,9 @@ function mult_surface_longueur(se, susi) {
     if (se == 0 || susi == 0 || facteur == 0) {
         result =  display_volume_with_metric_approx("0", "");
     } else {
-        var susi_cube = 
+        var susi_cube =
             multiplication_sexa_absolu(
-                multiplication_sexa_absolu(se, susi), 
+                multiplication_sexa_absolu(se, susi),
                 facteur);
         var se_deci = Math.floor(Sexa_vers_deci(susi_cube) / ratio);
         var reste = Sexa_vers_deci(susi_cube) % ratio;
@@ -14434,8 +14434,8 @@ function mult_surface_longueur_form(form) {
                   form.kus.value,
                   form.susi.value];
 
-    var result = 
-        mult_surface_longueur(surface2se(surface), 
+    var result =
+        mult_surface_longueur(surface2se(surface),
                               longueur2susi(length));
 
     display_result(result, "mult_surface_length_output");
@@ -14567,7 +14567,7 @@ function mult_capacite_form(form) {
     var scalaire = form.scalaire.value ? form.scalaire.value : "1";
 
     var result_se = multiplication_sexa_absolu(
-        capacite2se(capacity), 
+        capacite2se(capacity),
         scalaire);
 
     result = display_capacity_with_metric_approx(result_se);
@@ -14617,7 +14617,7 @@ function add_poids(form) {
                    form.gin2.value,
                    form.se2.value];
 
-    var result_se = addition_sexa(poids2se(weight1), 
+    var result_se = addition_sexa(poids2se(weight1),
                           poids2se(weight2));
 
     result = display_weight_with_metric_approx(result_se);
@@ -14667,7 +14667,7 @@ function mult_poids_form(form) {
     var scalaire = form.scalaire.value ? form.scalaire.value : "1";
 
     var result_se = multiplication_sexa_absolu(
-        poids2se(weight), 
+        poids2se(weight),
         scalaire);
 
     result = display_weight_with_metric_approx(result_se);
@@ -14707,29 +14707,29 @@ function systemS2systemG(form) {
     var u = form.u.value;
     var dis = form.dis.value;
 
-    dis = 
+    dis =
         addition_sexa(
-            dis, 
+            dis,
             multiplication_sexa_absolu(
-                u2dis_ratio_deci, 
+                u2dis_ratio_deci,
                 addition_sexa(
-                    u, 
+                    u,
                     multiplication_sexa_absolu(
-                        ges2u_ratio_deci, 
+                        ges2u_ratio_deci,
                         addition_sexa(
-                            ges, 
+                            ges,
                             multiplication_sexa_absolu(
-                                gesu2ges_ratio_deci, 
+                                gesu2ges_ratio_deci,
                                 addition_sexa(
-                                    gesu, 
+                                    gesu,
                                     multiplication_sexa_absolu(
-                                        sar2gesu_ratio_deci, 
+                                        sar2gesu_ratio_deci,
                                         addition_sexa(
-                                            sar, 
+                                            sar,
                                             multiplication_sexa_absolu(
-                                                saru2sar_ratio_deci, 
+                                                saru2sar_ratio_deci,
                                                 addition_sexa(
-                                                    saru, 
+                                                    saru,
                                                     multiplication_sexa_absolu(
                                                         sargal2saru_ratio_deci,
                                                         sargal))))))))))));
@@ -14761,7 +14761,7 @@ function systemG2systemS_form(form) {
 
 function systemG2systemS(sargal, saru, sar, buru, bur, ese, iku) {
 
-    iku = 
+    iku =
         addition_sexa(
             iku,
             multiplication_sexa_absolu(
@@ -14796,7 +14796,7 @@ function systemG2systemS(sargal, saru, sar, buru, bur, ese, iku) {
 
 
 
-//////////////////////////////////////////////////////////////// 
+////////////////////////////////////////////////////////////////
 // Briques
 ////////////////////////////////////////////////////////////////
 
@@ -14811,17 +14811,17 @@ function nalbanum(form) {
         if (!is_sexa(volume)) {
             result = not_sexa;
         } else {
-            if (is_regular(volume)) { 
+            if (is_regular(volume)) {
                 result =  '<table>' + '<tr> '
-                    + '<th>Standard volume</th>' 
+                    + '<th>Standard volume</th>'
                     + ' <th><em>nalbanum</em> (brickage)</th>'
                     + '<th><em>nazbalum</em> (carriage)</th></tr>'
                     + '<tr><td>' + volume + '</td>'
                     + '<td>' + floating(quotient_sexa("5", volume))
                     + '</td>'
-                    + '<td>' 
-                    + floating(multiplication_sexa("37.30", 
-                                                   quotient_sexa("5", volume))) 
+                    + '<td>'
+                    + floating(multiplication_sexa("37.30",
+                                                   quotient_sexa("5", volume)))
                     + '</td></tr>'
                     + "</table> (floating results)";
             }
@@ -14844,18 +14844,18 @@ function nalbanum(form) {
 ////////////////////////////////////////////////////////////////
 
 
-function is_int(value){ 
+function is_int(value){
     if (!isNaN(value) && (parseFloat(value) == parseInt(value)))
-        return true;  
-    else  
-        return false;   
+        return true;
+    else
+        return false;
 }
 
 function is_sexa(chaine) {
     var tableau = chaine.split(".");
 
     for (i = 0; i < tableau.length ; i++) {
-        if (!is_int(tableau[i]) || parseInt(tableau[i]) >= 60) 
+        if (!is_int(tableau[i]) || parseInt(tableau[i]) >= 60)
             return false;
     }
     return true;
@@ -14871,7 +14871,7 @@ function decomposition_60(sexa) {
     var quotient;
     var reste;
 
-    do { 
+    do {
         // Before entering this loop, the number is supposed to be
         // well-formated.
         quotient = Math.floor(number / ratio);
@@ -14887,7 +14887,7 @@ function decomposition_60(sexa) {
     } while (number >= ratio);
 
     if (number != 0)
-        result = number + "×" + divisor 
+        result = number + "×" + divisor
         + (result != "" ? " + " + result : "");
 
     return result;
@@ -14902,7 +14902,7 @@ function systemeS(sexa) {
     var divisor = 1;
     var ratio = 60;
 
-    do { 
+    do {
         var quotient = Math.floor(number / ratio);
         var reste = number % ratio;
         number = quotient;
@@ -14977,7 +14977,7 @@ function systemeG(sexa) {
 
     // mod 18
     if (number >= 3) {
-        rapport = 3; 
+        rapport = 3;
         quotient = Math.floor(number / rapport);
         reste = number % rapport;
         number = quotient;
@@ -14989,14 +14989,14 @@ function systemeG(sexa) {
     }
 
     // 10 et 6, etc.
-    while (number >= 10) { 
+    while (number >= 10) {
         rapport = 10;
         quotient = Math.floor(number / rapport);
         reste = number % rapport;
         number = quotient;
         result = (reste == 0 ? "" : reste
                   + systemG_name(divisor)
-                  + (result == "" ? "" : 
+                  + (result == "" ? "" :
                      divisor <= 64800 ? " " : " + "))
             + result;
         divisor *= rapport;
@@ -15007,7 +15007,7 @@ function systemeG(sexa) {
         number = quotient;
         result = (reste == 0 ? "" : reste
                   + (divisor == 1 ? "" : systemG_name(divisor))
-                  + (result == "" ? "" : 
+                  + (result == "" ? "" :
                      divisor <= 64800 ? " " : " + "))
             + result;
         divisor *= rapport;
@@ -15015,7 +15015,7 @@ function systemeG(sexa) {
 
     if (number != 0)
         result = number + systemG_name(divisor)
-        + (result == "" ? "" : 
+        + (result == "" ? "" :
            (divisor <= 64800 ? " " : " + ") + result);
 
     return result;
@@ -15037,10 +15037,10 @@ function clear_result(element) {
 
 
 //]]>
-// --> 
+// -->
 </script>
 
-    <!-- 
+    <!--
 ################################################################
        HTML code of MesoCalc
 ################################################################
@@ -15093,7 +15093,7 @@ function clear_result(element) {
         </form>
 
 
-        
+
         <ul>
           <li> <a href="#conversions">Conversion &amp; properties</a></li>
           <li> <a href="#multiplication">Multiplicative operations</a></li>
@@ -15108,15 +15108,15 @@ function clear_result(element) {
 
         <ul>
           <li> <a href="#lengths">Lengths</a> / <a href="#surfaces">Surfaces</a> /
-            <a  href="#volumes">Volumes</a></li> 
+            <a  href="#volumes">Volumes</a></li>
           <li> <a href="#capacities">Capacities</a></li>
-          <li> <a href="#weights">Weights</a></li> 
+          <li> <a href="#weights">Weights</a></li>
           <!-- <li> <a href="#systemSsystemG">Systems G/S</a></li> -->
         </ul>
 
         <div class="titre"><a href="#dates">Dates</a></div>
 
-        
+
       </div>
 
 
@@ -15169,13 +15169,13 @@ function clear_result(element) {
                   progression, tables... </li>
                 <li> <a href="#addition">Additive operations</a>: addition,
                   subtraction; </li>
-              </ul> 
+              </ul>
             </li>
 
             <li> <a href="#units">Measures</a>
               <ul>
-                <li>  <a href="#lengths">Lengths</a>, 
-                  <a href="#surfaces">surfaces</a>, 
+                <li>  <a href="#lengths">Lengths</a>,
+                  <a href="#surfaces">surfaces</a>,
                   <a href="#volumes">volumes</a>,
                   <a href="#capacities">capacities</a> and
                   <a href="#weights">weights</a>: addition,
@@ -15191,20 +15191,20 @@ function clear_result(element) {
                 </ul>
               </li>
 
-            
+
             <li> <a href="#faq">About MesoCalc</a>
               <ul>
                 <li> <a href="#download">Can I download
                     MesoCalc?</a></li>
                 <li> <a href="#source">Can I read the source
                     code?</a> </li>
-                <li><a href="#archive">Is MesoCalc's source code
-                  archived?</a></li>
                 <li><a href="#features">Are there new features in
                   MesoCalc?</a></li>
+                <li><a href="#archive">Is MesoCalc's source code
+                  archived?</a></li>
                 <li> <a href="#license">License</a> </li>
                 <li> <a href="#contact">Contact</a> </li>
-              </ul> 
+              </ul>
             </li>
           </ul>
         </div>
@@ -15223,14 +15223,14 @@ function clear_result(element) {
         <div class="encart">
           <p>
             The numbers if the calculator below may belong to different
-            kinds: 
+            kinds:
           </p>
 
           <table class="center">
             <tr>
               <th>Code</th>
-              <th>Numerical system</th> 
-              <th>Examples</th> 
+              <th>Numerical system</th>
+              <th>Examples</th>
             </tr>
 
             <tr>
@@ -15371,53 +15371,53 @@ function clear_result(element) {
               notation:</p>
 
             <table class="center">
-              <tr><th><span class="system">10A</span></th> 
-                <th><span class="system">60A</span></th> 
+              <tr><th><span class="system">10A</span></th>
+                <th><span class="system">60A</span></th>
                 <th><span class="system">60F</span></th> </tr>
 
-              <tr> 
-                <td>1</td> 
-                <td align="right">1</td> 
-                <td align="right">1</td> 
+              <tr>
+                <td>1</td>
+                <td align="right">1</td>
+                <td align="right">1</td>
               </tr>
-              <tr> 
-                <td>2</td> 
-                <td align="right">2</td> 
-                <td align="right">2</td> 
+              <tr>
+                <td>2</td>
+                <td align="right">2</td>
+                <td align="right">2</td>
               </tr>
-              <tr> 
-                <td>59</td> 
-                <td align="right">59</td> 
-                <td align="right">59</td> 
+              <tr>
+                <td>59</td>
+                <td align="right">59</td>
+                <td align="right">59</td>
               </tr>
-              <tr> 
-                <td><strong>60</strong></td> 
-                <td align="right"><strong>1.0</strong></td> 
-                <td align="right"><strong>1</strong></td> 
+              <tr>
+                <td><strong>60</strong></td>
+                <td align="right"><strong>1.0</strong></td>
+                <td align="right"><strong>1</strong></td>
               </tr>
-              <tr> 
-                <td>61</td> 
-                <td align="right">1.1</td> 
-                <td align="right">1.1</td> 
+              <tr>
+                <td>61</td>
+                <td align="right">1.1</td>
+                <td align="right">1.1</td>
               </tr>
-              <tr> 
-                <td><strong>120</strong></td> 
-                <td align="right"><strong>2.0</strong></td> 
-                <td align="right"><strong>2</strong></td> 
+              <tr>
+                <td><strong>120</strong></td>
+                <td align="right"><strong>2.0</strong></td>
+                <td align="right"><strong>2</strong></td>
               </tr>
-              <tr> 
-                <td><strong>3600</strong></td> 
-                <td align="right"><strong>1.0.0</strong></td> 
-                <td align="right"><strong>1</strong></td> 
+              <tr>
+                <td><strong>3600</strong></td>
+                <td align="right"><strong>1.0.0</strong></td>
+                <td align="right"><strong>1</strong></td>
               </tr>
-              <tr> 
-                <td><strong>7200</strong></td> 
-                <td align="right"><strong>2.0.0</strong></td> 
-                <td align="right"><strong>2</strong></td> 
+              <tr>
+                <td><strong>7200</strong></td>
+                <td align="right"><strong>2.0.0</strong></td>
+                <td align="right"><strong>2</strong></td>
               </tr>
-              <tr> 
-                <td>10000</td> 
-                <td align="right">2.46.40</td> 
+              <tr>
+                <td>10000</td>
+                <td align="right">2.46.40</td>
                 <td align="right">2.46.40</td>
               </tr>
             </table>
@@ -15487,13 +15487,13 @@ function clear_result(element) {
 
 
 
-          <h3><a name="biblio"/>Bibliography</h3> 
+          <h3><a name="biblio"/>Bibliography</h3>
 
           <div class="encart">
             <p>If you want to know more about the sexagesimal place-value
               notation and mathematical cuneiform texts:</p>
 
-            <ul> 
+            <ul>
               <li> FRIBERG, Jöran (2007), <em>A Remarkable Collection of
                 Babylonian Mathematical Texts</em>, New York:
                 Springer. </li>
@@ -15511,7 +15511,7 @@ function clear_result(element) {
                 American Oriental Series &amp; American Schools of
                 Oriental Research. </li>
               <li>PARKER, R. A. and DUBBERSTEIN, W. H., <em>Babylonian
-                Chronology, 626 B.C.-A.D. 45</em>, Studies in Ancient Oriental Civilization 24, 1942.</li> 
+                Chronology, 626 B.C.-A.D. 45</em>, Studies in Ancient Oriental Civilization 24, 1942.</li>
               <li> PROUST, Christine (2007), <em>Tablettes mathématiques de
                   Nippur</em>, Istanbul: Institut Français d'Etudes
                 Anatoliennes, De Boccard. </li>
@@ -15529,7 +15529,7 @@ function clear_result(element) {
               <li><a href="http://oracc.museum.upenn.edu/doc/builder/math">Mathematical
                   Notations</a>: conventions for the translitteration of
                   Mesopotamian mathematical and astronomical texts.</li>
-            </ul> 
+            </ul>
           </div>
         </div>
 
@@ -15542,7 +15542,7 @@ function clear_result(element) {
 
 
         <h3><a name="conversions"/><a name="properties"/>Conversion and
-          arithmetical properties</h3> 
+          arithmetical properties</h3>
 
 
         <h4>Conversions</h4>
@@ -15551,7 +15551,7 @@ function clear_result(element) {
 
           <form action="" id="form_deci2sexa" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Conversion from decimal to sexagesimal
 
@@ -15559,7 +15559,7 @@ function clear_result(element) {
 
               <input type="text" size="20" name="input" value=""
                      onkeypress="if (event.keyCode == 13)
-                                 deci2sexa(this.form)" /> 
+                                 deci2sexa(this.form)" />
 
               <input type="button" name="bouton" value="Sexagesimal &rarr;"
                      onclick="deci2sexa(this.form)" />
@@ -15605,7 +15605,7 @@ function clear_result(element) {
 
           <form action="" id="form_regular" onsubmit="return false;">
 
-            <p>  
+            <p>
 
               Regular number?
 
@@ -15616,7 +15616,7 @@ function clear_result(element) {
                                  regular(this.form)" />
 
               <input type="button" name="bouton" value="Regular?"
-                     onclick="regular(this.form)" />  
+                     onclick="regular(this.form)" />
 
               <!-- <input type="text" size="25" name="output" value="" /> -->
 
@@ -15630,7 +15630,7 @@ function clear_result(element) {
 
         <div class="encart">
 
-          <form action="" id="form_regular_approximation" 
+          <form action="" id="form_regular_approximation"
                 onsubmit="return false;">
 
             <p>
@@ -15641,7 +15641,7 @@ function clear_result(element) {
                            onkeypress="if (event.keyCode == 13)
                            regular_approximation(this.form)" />
 
-              (<span class="system">60A/F</span>) 
+              (<span class="system">60A/F</span>)
 
               up to <select name="nb_digits">
                 <option value="1">1</option>
@@ -15667,7 +15667,7 @@ function clear_result(element) {
               </select> sexagesimal digits: <br/>
 
               <input type="button" name="bouton" value="Approximations"
-                     onclick="regular_approximation(this.form)" />  
+                     onclick="regular_approximation(this.form)" />
 
             </p>
 
@@ -15683,7 +15683,7 @@ function clear_result(element) {
 
           <form action="" id="form_facteurs" onsubmit="return false;">
 
-            <p>    
+            <p>
 
               Prime factors
 
@@ -15695,7 +15695,7 @@ function clear_result(element) {
                                  facteurs(this.form)" />
 
               <input type="button" name="bouton" value="Prime factors"
-                     onclick="facteurs(this.form)" />  
+                     onclick="facteurs(this.form)" />
 
               <span id="prime_factors"/>
 
@@ -15731,7 +15731,7 @@ function clear_result(element) {
                      gcd_form(this.form)" />
 
               <input type="button" name="bouton" value="GCD"
-                     onclick="gcd_form(this.form)" />  
+                     onclick="gcd_form(this.form)" />
 
               <span id="gcd"/>
 
@@ -15754,7 +15754,7 @@ function clear_result(element) {
 
           <form action="" id="form_multiplication" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Multiplication
 
@@ -15798,7 +15798,7 @@ function clear_result(element) {
 
           <form action="" id="form_mult_table" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Multiplication table
 
@@ -15809,7 +15809,7 @@ function clear_result(element) {
                      mult_table(this.form)" />
 
               <input type="button" name="bouton" value="Table"
-                     onclick="mult_table(this.form)" /> 
+                     onclick="mult_table(this.form)" />
 
             </p>
 
@@ -15827,7 +15827,7 @@ function clear_result(element) {
 
           <form action="" id="form_quotient" onsubmit="return false;">
 
-            <p>  
+            <p>
 
               Quotient
 
@@ -15847,7 +15847,7 @@ function clear_result(element) {
               <br/>
 
               <input type="button" name="bouton" value="Quotient"
-                     onclick="quotient(this.form)" />  
+                     onclick="quotient(this.form)" />
 
               <input type="button" onclick="clear_quotient(this.form);"
               value="Clear"/>
@@ -15870,7 +15870,7 @@ function clear_result(element) {
 
           <form action="" id="form_inverse" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Reciprocal number
 
@@ -15903,7 +15903,7 @@ function clear_result(element) {
 
               (<span class="system">60F</span>) </p>
 
-            <div id="inverse_tableau"></div> 
+            <div id="inverse_tableau"></div>
 
           </form>
         </div>
@@ -15917,7 +15917,7 @@ function clear_result(element) {
           <form action="" id="form_regular_numbers_interval"
                 onsubmit="return false;">
 
-            <p>  
+            <p>
 
               Table of regular numbers
 
@@ -15925,7 +15925,7 @@ function clear_result(element) {
 
               and
 
-              <span class="system">60A/F</span>)   <br/> 
+              <span class="system">60A/F</span>)   <br/>
 
               between
 
@@ -15980,18 +15980,18 @@ function clear_result(element) {
 
         <div class="encart">
 
-          <form action="" id="form_regular_inverse_liste" 
+          <form action="" id="form_regular_inverse_liste"
                 onsubmit="return false;">
 
             <p>
 
-              Table of regular and reciprocal numbers <br/> 
+              Table of regular and reciprocal numbers <br/>
 
               from
 
               <input type="text" size="10" name="input1" value=""
                      onkeypress="if (event.keyCode == 13)
-                                 regular_inverse_liste(this.form)" /> 
+                                 regular_inverse_liste(this.form)" />
 
               to
 
@@ -16026,11 +16026,11 @@ function clear_result(element) {
 
               <input type="button"
                      name="bouton" value="Table"
-                     onclick="regular_inverse_liste(this.form)" /> 
+                     onclick="regular_inverse_liste(this.form)" />
 
             </p>
 
-            <div id="regular_inverse_liste"></div> 
+            <div id="regular_inverse_liste"></div>
 
           </form>
         </div>
@@ -16073,7 +16073,7 @@ function clear_result(element) {
 
           <form action="" id="form_square_root" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Square root
 
@@ -16102,12 +16102,12 @@ function clear_result(element) {
 
           <form action="" id="form_square_table" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               <input type="button" name="bouton" value="Table of squares"
                      onclick="square_table(this.form)" />
 
-              (<span class="system">60F</span>) 
+              (<span class="system">60F</span>)
 
             </p>
 
@@ -16147,7 +16147,7 @@ function clear_result(element) {
 
           <form action="" id="form_cube" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Cube
 
@@ -16177,7 +16177,7 @@ function clear_result(element) {
 
           <form action="" id="form_cubic_root" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Cube root
 
@@ -16232,7 +16232,7 @@ function clear_result(element) {
 
           <form action="" id="form_geom" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Geometric progression
 
@@ -16249,14 +16249,14 @@ function clear_result(element) {
                                   == 13) geom(this.form)"
                                   /><sup><span class="system">60A/F</span></sup>
 
-              (common ratio) <br/> 
+              (common ratio) <br/>
 
               <em>n</em> = <input type="text" size="20" name="terms"
                                   value="" onkeypress="if (event.keyCode
                                   == 13) geom(this.form)"
                                   /><sup><span class="system">10A</span></sup>
 
-              (number of terms) <br/>        
+              (number of terms) <br/>
 
               <input type="button" name="bouton" value="Table"
                      onclick="geom(this.form)" />
@@ -16278,7 +16278,7 @@ function clear_result(element) {
 
           <form action="" id="form_addition" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Addition
 
@@ -16298,7 +16298,7 @@ function clear_result(element) {
 
               <span id="nouv_addition"></span>
 
-              <br/> 
+              <br/>
 
               <input type="button" name="bouton" value="Sum"
                      onclick="addition(this.form)" />
@@ -16320,7 +16320,7 @@ function clear_result(element) {
 
           <form action="" id="form_soustraction" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Subtraction
 
@@ -16339,17 +16339,17 @@ function clear_result(element) {
                      id="subtrahenda2" value="" onkeypress="if
                      (event.keyCode == 13) soustraction(this.form)" />
 
-              <span id="nouv_soustraction"></span> 
+              <span id="nouv_soustraction"></span>
 
-              <br/> 
+              <br/>
 
               <input type="button" name="bouton" value="Difference"
-                     onclick="soustraction(this.form)" />      
+                     onclick="soustraction(this.form)" />
 
               <!-- <input type="text" size="25" name="output" value="" />   -->
 
               <input type="button" onclick="clear_soustraction(this.form)"
-                     value="Clear"/> 
+                     value="Clear"/>
 
             </div>
 
@@ -16382,14 +16382,14 @@ function clear_result(element) {
               &larr; </td>
               <td><strong><em>kuš</em></strong></td> <td> &larr; 30
               &larr; </td>
-              <td><strong><em>šusi</em></strong></td> 
+              <td><strong><em>šusi</em></strong></td>
             </tr>
             <tr>
               <td>10.8 km</td> <td> </td>
               <td>360 m</td> <td> </td>
               <td>6 m</td> <td> </td>
               <td>50 cm</td> <td> </td>
-              <td>17 mm</td> 
+              <td>17 mm</td>
             </tr>
           </table>
         </div>
@@ -16401,7 +16401,7 @@ function clear_result(element) {
 
           <form action="" id="form_add_longueurs" onsubmit="return false;">
 
-            <p>  
+            <p>
 
               Add lengths:
 
@@ -16410,18 +16410,18 @@ function clear_result(element) {
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th> 
-                  <th><em>danna</em></th> 
+                  <th></th>
+                  <th><em>danna</em></th>
                   <th><em>uš</em></th>
-                  <th><em>ninda</em></th> 
-                  <th><em>kuš</em></th> 
+                  <th><em>ninda</em></th>
+                  <th><em>kuš</em></th>
                   <th><em>šusi</em></th>
                 </tr>
 
                 <tr>
                   <td></td>
 
-                  <td> 
+                  <td>
 
                     <input type="text" name="danna1"
                            id="add_length_danna1" value="" size="8"
@@ -16468,7 +16468,7 @@ function clear_result(element) {
 
 
                 <tr>
-                  <td align="center">+</td> 
+                  <td align="center">+</td>
 
                   <td>
 
@@ -16514,7 +16514,7 @@ function clear_result(element) {
                            add_longueurs(this.form)" />
 
                   </td>
-                </tr> 
+                </tr>
 
 
                 <tr>
@@ -16522,8 +16522,8 @@ function clear_result(element) {
                 </tr>
 
 
-                <tr>     
-                  <td> 
+                <tr>
+                  <td>
 
                     <input type="button" name="bouton" value="="
                            onclick="add_longueurs(this.form)" />
@@ -16545,7 +16545,7 @@ function clear_result(element) {
 clear_result('add_lengths_output');
 document.getElementById('add_length_danna1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -16564,9 +16564,9 @@ document.getElementById('add_length_danna1').focus();" value="Clear"/>
 
           <form action="" id="form_soustr_longueurs" onsubmit="return false;">
 
-            <p>  
+            <p>
 
-              Subtract lengths: 
+              Subtract lengths:
 
             </p>
 
@@ -16575,14 +16575,14 @@ document.getElementById('add_length_danna1').focus();" value="Clear"/>
               <table class="encadre">
                 <tr>
                   <th></th>
-                  <th><em>danna</em></th> 
-                  <th><em>uš</em></th> 
-                  <th><em>ninda</em></th> 
-                  <th><em>kuš</em></th> 
+                  <th><em>danna</em></th>
+                  <th><em>uš</em></th>
+                  <th><em>ninda</em></th>
+                  <th><em>kuš</em></th>
                   <th><em>šusi</em></th>
                 </tr>
 
-                <tr> 
+                <tr>
 
                   <td></td>
 
@@ -16613,7 +16613,7 @@ document.getElementById('add_length_danna1').focus();" value="Clear"/>
 
                   </td>
 
-                  <td> 
+                  <td>
 
                     <input type="text" name="kus1" value="" size="8"
                            id="subtract_length_kus1"
@@ -16668,7 +16668,7 @@ document.getElementById('add_length_danna1').focus();" value="Clear"/>
                            onkeypress="if (event.keyCode == 13)
                                        soustr_longueurs(this.form)" />
 
-                  </td> 
+                  </td>
                 </tr>
 
 
@@ -16697,7 +16697,7 @@ document.getElementById('add_length_danna1').focus();" value="Clear"/>
 clear_result('subtract_lengths_output');
 document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -16711,7 +16711,7 @@ document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
 
           <form action="" id="form_mult_longueur" onsubmit="return false;">
 
-            <p>  
+            <p>
 
               Multiply a length:
 
@@ -16721,7 +16721,7 @@ document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
 
               <table class="encadre">
 
-                <tr> 
+                <tr>
                   <td>
 
                     <input type="text" name="danna"
@@ -16740,11 +16740,11 @@ document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
                            (event.keyCode == 13)
                            mult_longueur_form(this.form)" />
 
-                    <strong><em>uš</em></strong> 
+                    <strong><em>uš</em></strong>
 
                   </td>
 
-                  <td> 
+                  <td>
 
                     <input type="text" name="ninda" value="" size="8"
                            onkeypress="if (event.keyCode == 13)
@@ -16754,7 +16754,7 @@ document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
 
                   </td>
 
-                  <td>  
+                  <td>
 
                     <input type="text" name="kus" id="mult_longueur_kus"
                            value="" size="8" onkeypress="if
@@ -16765,7 +16765,7 @@ document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
 
                   </td>
 
-                  <td>  
+                  <td>
 
                     <input type="text" name="susi"
                            id="mult_longueur_susi" value="" size="8"
@@ -16820,7 +16820,7 @@ document.getElementById('subtract_length_danna1').focus();" value="Clear"/>
 clear_result('mult_length_output');
 document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -16855,13 +16855,13 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
               <td>3600 m&sup2;</td> <td> </td>
               <td>36 m&sup2;</td> <td> </td>
               <td>0.6 m&sup2;</td> <td> </td>
-              <td>33 cm&sup2;</td> 
+              <td>33 cm&sup2;</td>
             </tr>
             <tr>
               <td></td> <td> </td>
               <td>1 ninda &times; 1 ninda</td> <td> </td>
               <td></td> <td> </td>
-              <td></td> 
+              <td></td>
             </tr>
           </table>
         </div>
@@ -16873,20 +16873,20 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
 
           <form action="" id="form_mult_longueurs" onsubmit="return false;">
 
-            <p>  
+            <p>
 
-              Multiply lengths to get a surface: 
+              Multiply lengths to get a surface:
 
             </p>
 
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th>  
-                  <th><em>danna</em></th> 
-                  <th><em>uš</em></th> 
-                  <th><em>ninda</em></th> 
-                  <th><em>kuš</em></th> 
+                  <th></th>
+                  <th><em>danna</em></th>
+                  <th><em>uš</em></th>
+                  <th><em>ninda</em></th>
+                  <th><em>kuš</em></th>
                   <th><em>šusi</em></th>
                 </tr>
 
@@ -16982,7 +16982,7 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
                            onkeypress="if (event.keyCode == 13)
                            mult_longueurs(this.form)" />
 
-                  </td> 
+                  </td>
                 </tr>
 
                 <tr>
@@ -16997,7 +16997,7 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
 
                   </td>
 
-                  <td colspan="4">   
+                  <td colspan="4">
 
                     <span id="mult_two_lengths_output"></span>
 
@@ -17028,9 +17028,9 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
 
           <form action="" id="form_add_surfaces" onsubmit="return false;">
 
-            <p>  
+            <p>
 
-              Add surfaces: 
+              Add surfaces:
 
             </p>
 
@@ -17038,9 +17038,9 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
               <table class="encadre">
                 <tr>
                   <th></th>
-                  <th><em>gan</em></th> 
-                  <th><em>sar</em></th> 
-                  <th><em>gin</em></th> 
+                  <th><em>gan</em></th>
+                  <th><em>sar</em></th>
+                  <th><em>gin</em></th>
                   <th><em>še</em></th>
                 </tr>
                 <tr>
@@ -17078,7 +17078,7 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
                     <input type="text" name="se1" value="" size="8"
                            id="add_surfaces_se1"
                            onkeypress="if (event.keyCode == 13)
-                                       add_surfaces(this.form)" /> 
+                                       add_surfaces(this.form)" />
 
                   </td>
                 </tr>
@@ -17129,20 +17129,20 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
 
                 <tr>
                   <td>
-                    
+
                     <input type="button" name="bouton" value="="
-                           onclick="add_surfaces(this.form)" /> 
-                    
+                           onclick="add_surfaces(this.form)" />
+
 
                   </td>
 
-                  <td colspan="3"> 
+                  <td colspan="3">
 
                     <span id="add_surfaces_output"></span>
 
                     <!-- <input type="text" name="output" value=""
                     size="45" /> -->
-                    
+
                   </td>
 
                   <td>
@@ -17151,7 +17151,7 @@ document.getElementById('mult_longueur_danna').focus();" value="Clear"/>
 clear_result('add_surfaces_output');
 document.getElementById('add_surfaces_gan1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -17165,7 +17165,7 @@ document.getElementById('add_surfaces_gan1').focus();" value="Clear"/>
 
           <form action="" id="form_soustr_surfaces" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Subtract surfaces:
 
@@ -17174,10 +17174,10 @@ document.getElementById('add_surfaces_gan1').focus();" value="Clear"/>
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th>  
-                  <th><em>gan</em></th> 
-                  <th><em>sar</em></th> 
-                  <th><em>gin</em></th> 
+                  <th></th>
+                  <th><em>gan</em></th>
+                  <th><em>sar</em></th>
+                  <th><em>gin</em></th>
                   <th><em>še</em></th>
                 </tr>
                 <tr>
@@ -17217,7 +17217,7 @@ document.getElementById('add_surfaces_gan1').focus();" value="Clear"/>
                            onkeypress="if (event.keyCode == 13)
                            soustr_surfaces(this.form)" />
 
-                  </td> 
+                  </td>
                 </tr>
 
                 <tr>
@@ -17269,16 +17269,16 @@ document.getElementById('add_surfaces_gan1').focus();" value="Clear"/>
 
                     <input type="button" name="bouton" value="="
                            onclick="soustr_surfaces(this.form)" />
-                    
+
                   </td>
 
-                  <td colspan="3"> 
+                  <td colspan="3">
 
                     <span id="subtract_surfaces_output"></span>
 
                     <!-- <input type="text" name="output" value=""
                     size="45" /> -->
-                    
+
                   </td>
 
                   <td>
@@ -17287,7 +17287,7 @@ document.getElementById('add_surfaces_gan1').focus();" value="Clear"/>
 clear_result('subtract_surfaces_output');
 document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -17304,13 +17304,13 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
 
             <p>
 
-              Multiply a surface: 
+              Multiply a surface:
 
             </p>
 
             <div class="retrait">
               <table class="encadre">
-                <tr> 
+                <tr>
                   <td>
 
                     <input type="text" name="gan" id="mult_surface_gan"
@@ -17363,7 +17363,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                            mult_surface_form(this.form)" />
 
                     times
-                    
+
                   </td>
                 </tr>
 
@@ -17394,7 +17394,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                                                   clear_result('mult_surface_output');
                                                   document.getElementById('mult_surface_gan').focus();"
                                                   value="Clear"/>
-                    
+
                   </td>
                 </tr>
               </table>
@@ -17417,13 +17417,13 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
         <div class="retrait">
           <table class="encadre">
             <tr>
-              <td><strong><em>gan</em></strong> </td> 
+              <td><strong><em>gan</em></strong> </td>
               <td> &larr; 100 &larr; </td>
               <td><strong><em>sar</em></strong> </td>
               <td> &larr; 60 &larr; </td>
               <td><strong><em>gin</em></strong> </td>
               <td> &larr; 180 &larr; </td>
-              <td><strong><em>še</em></strong> </td> 
+              <td><strong><em>še</em></strong> </td>
             </tr>
             <tr>
               <td>1800 m&sup3; </td>
@@ -17432,7 +17432,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
               <td> </td>
               <td>300 dm&sup3; </td>
               <td> </td>
-              <td>1.66 dm&sup3; </td> 
+              <td>1.66 dm&sup3; </td>
             </tr>
             <tr>
               <td> </td>
@@ -17450,7 +17450,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
 
         <div class="encart">
 
-          <form action="" id="form_mult_trois_longueurs" 
+          <form action="" id="form_mult_trois_longueurs"
                 onsubmit="return false;">
 
             <p>
@@ -17463,13 +17463,13 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
               <table class="encadre">
                 <tr>
                   <th></th>
-                  <th><em>danna</em></th> 
-                  <th><em>uš</em></th> 
-                  <th><em>ninda</em></th> 
-                  <th><em>kuš</em></th> 
+                  <th><em>danna</em></th>
+                  <th><em>uš</em></th>
+                  <th><em>ninda</em></th>
+                  <th><em>kuš</em></th>
                   <th><em>šusi</em></th>
                 </tr>
-                <tr> 
+                <tr>
                   <td> </td>
                   <td>
 
@@ -17479,7 +17479,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                            mult_trois_longueurs_form(this.form)" />
 
                   </td>
-                  
+
                   <td>
 
                     <input type="text" name="us1" id="mult_3length_us1"
@@ -17505,7 +17505,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                            mult_trois_longueurs_form(this.form)" />
 
                   </td>
-                  
+
                   <td>
 
                     <input type="text" name="susi1"
@@ -17536,7 +17536,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                            mult_trois_longueurs_form(this.form)" />
 
                   </td>
-                  
+
                   <td>
 
                     <input type="text" name="ninda2"
@@ -17545,7 +17545,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                            mult_trois_longueurs_form(this.form)" />
 
                   </td>
-                  
+
                   <td>
 
                     <input type="text" name="kus2"
@@ -17568,7 +17568,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                 <tr>
                   <td align="center">&times;
 
-                  </td> 
+                  </td>
 
                   <td>
 
@@ -17622,15 +17622,15 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
 
                 <tr>
                   <td>
-                    
+
                     <input type="button" name="bouton" value="="
                            onclick="mult_trois_longueurs_form(this.form)"
                            />
-                    
+
                   </td>
 
-                  <td colspan="4"> 
-                    
+                  <td colspan="4">
+
                     <span id="mult_three_lengths_output"></span>
 
                     <!--    <input type="text" name="output" value=""
@@ -17644,7 +17644,7 @@ document.getElementById('subtract_surfaces_gan1').focus();" value="Clear"/>
                                                   clear_result('mult_three_lengths_output');
 document.getElementById('mult_3length_danna1').focus();"
                            value="Clear"/>
-                    
+
                   </td>
                 </tr>
               </table>
@@ -17658,7 +17658,7 @@ document.getElementById('mult_3length_danna1').focus();"
 
         <div class="encart">
 
-          <form action="" id="form_mult_surface_longueur" 
+          <form action="" id="form_mult_surface_longueur"
                 onsubmit="return false;">
 
             <p>
@@ -17671,7 +17671,7 @@ document.getElementById('mult_3length_danna1').focus();"
 
               <table class="encadre">
 
-                <tr> 
+                <tr>
                   <td>
 
                     <input type="text" name="danna"
@@ -17690,7 +17690,7 @@ document.getElementById('mult_3length_danna1').focus();"
                            onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>uš</em></strong> 
+                    <strong><em>uš</em></strong>
 
                   </td>
 
@@ -17700,7 +17700,7 @@ document.getElementById('mult_3length_danna1').focus();"
                            onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>ninda</em></strong> 
+                    <strong><em>ninda</em></strong>
 
                   </td>
 
@@ -17711,7 +17711,7 @@ document.getElementById('mult_3length_danna1').focus();"
                            size="8" onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>kuš</em></strong> 
+                    <strong><em>kuš</em></strong>
 
                   </td>
 
@@ -17722,14 +17722,14 @@ document.getElementById('mult_3length_danna1').focus();"
                            size="8" onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>šusi</em></strong> 
+                    <strong><em>šusi</em></strong>
 
                   </td>
                 </tr>
 
                 <tr>
                   <td> &times; </td>
-                  
+
                   <td>
 
                     <input type="text" name="gan"
@@ -17737,7 +17737,7 @@ document.getElementById('mult_3length_danna1').focus();"
                            size="8" onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>gan</em></strong> 
+                    <strong><em>gan</em></strong>
 
                   </td>
 
@@ -17748,7 +17748,7 @@ document.getElementById('mult_3length_danna1').focus();"
                            size="8" onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>sar</em></strong> 
+                    <strong><em>sar</em></strong>
 
                   </td>
 
@@ -17768,8 +17768,8 @@ document.getElementById('mult_3length_danna1').focus();"
                            onkeypress="if (event.keyCode == 13)
                            mult_surface_longueur_form(this.form)" />
 
-                    <strong><em>še</em></strong> 
-                    
+                    <strong><em>še</em></strong>
+
 
                   </td>
                 </tr>
@@ -17804,7 +17804,7 @@ document.getElementById('mult_3length_danna1').focus();"
 document.getElementById('mult_surface_length_danna').focus();"
                            value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -17818,7 +17818,7 @@ document.getElementById('mult_surface_length_danna').focus();"
 
           <form action="" id="form_add_volumes" onsubmit="return false;">
 
-            <p>  
+            <p>
 
               Add volumes:
 
@@ -17827,10 +17827,10 @@ document.getElementById('mult_surface_length_danna').focus();"
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th> 
-                  <th><em>gan</em></th> 
-                  <th><em>sar</em></th> 
-                  <th><em>gin</em></th> 
+                  <th></th>
+                  <th><em>gan</em></th>
+                  <th><em>sar</em></th>
+                  <th><em>gin</em></th>
                   <th><em>še</em></th>
                 </tr>
 
@@ -17920,13 +17920,13 @@ document.getElementById('mult_surface_length_danna').focus();"
 
                 <tr>
                   <td>
-                    
+
                     <input type="button" name="bouton" value="="
                            onclick="add_volumes(this.form)" />
-                    
+
                   </td>
 
-                  <td colspan="3"> 
+                  <td colspan="3">
 
                     <span id="add_volumes_output"></span>
 
@@ -17941,7 +17941,7 @@ document.getElementById('mult_surface_length_danna').focus();"
 clear_result('add_volumes_output');
 document.getElementById('add_volumes_gan1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -17956,7 +17956,7 @@ document.getElementById('add_volumes_gan1').focus();" value="Clear"/>
 
           <form action="" id="form_soustr_volumes" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Subtract volumes:
 
@@ -17965,7 +17965,7 @@ document.getElementById('add_volumes_gan1').focus();" value="Clear"/>
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th> 
+                  <th></th>
                   <th><em>gan</em></th>
                   <th><em>sar</em></th> <th><em>gin</em></th>
                   <th><em>še</em></th>
@@ -18008,11 +18008,11 @@ document.getElementById('add_volumes_gan1').focus();" value="Clear"/>
                            onkeypress="if (event.keyCode == 13)
                                        soustr_volumes(this.form)" />
 
-                  </td> 
+                  </td>
                 </tr>
 
                 <tr>
-                  <td align="center">&minus; </td> 
+                  <td align="center">&minus; </td>
 
                   <td>
 
@@ -18057,13 +18057,13 @@ document.getElementById('add_volumes_gan1').focus();" value="Clear"/>
 
                 <tr>
                   <td>
-                    
+
                     <input type="button" name="bouton" value="="
                            onclick="soustr_volumes(this.form)" />
-                    
+
                   </td>
 
-                  <td colspan="3"> 
+                  <td colspan="3">
 
                     <span id="subtract_volumes_output"></span>
 
@@ -18078,7 +18078,7 @@ document.getElementById('add_volumes_gan1').focus();" value="Clear"/>
 clear_result('subtract_volumes_output');
 document.getElementById('subtract_volumes_gan1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -18093,7 +18093,7 @@ document.getElementById('subtract_volumes_gan1').focus();" value="Clear"/>
 
             <p>
 
-              Multiply a volume: 
+              Multiply a volume:
 
             </p>
 
@@ -18101,7 +18101,7 @@ document.getElementById('subtract_volumes_gan1').focus();" value="Clear"/>
 
               <table class="encadre">
 
-                <tr> 
+                <tr>
                   <td>
 
                     <input type="text" name="gan" id="mult_volume_gan"
@@ -18148,14 +18148,14 @@ document.getElementById('subtract_volumes_gan1').focus();" value="Clear"/>
                 <tr>
                   <td colspan="4">
                     &times;
-                    
+
                     <input type="text" name="scalaire"
                            id="mult_volume_scalaire" value="" size="8"
                            onkeypress="if (event.keyCode == 13)
                            mult_volume_form(this.form)" />
 
                     times
-                    
+
                   </td>
                 </tr>
 
@@ -18168,24 +18168,24 @@ document.getElementById('subtract_volumes_gan1').focus();" value="Clear"/>
 
                     <input type="button" name="bouton" value="="
                            onclick="mult_volume_form(this.form)" />
-                    
+
                   </td>
 
                   <td colspan="2">
-                    
+
                     <span id="mult_volume_output"></span>
-                    
+
                     <!-- <input type="text" name="output" value=""
                          size="45" /> -->
 
                   </td>
 
-                  <td>                    
+                  <td>
                     <input type="button" onclick="form.reset();
                                                   clear_result('mult_volume_output');
 document.getElementById('mult_volume_gan').focus();" value="Clear"/>
-                    
-                  </td> 
+
+                  </td>
                 </tr>
               </table>
             </div>
@@ -18220,7 +18220,7 @@ document.getElementById('mult_volume_gan').focus();" value="Clear"/>
               <td><strong><em>še</em></strong> </td>
             </tr>
             <tr>
-              <td>300 L</td> 
+              <td>300 L</td>
               <td> </td>
               <td>60 L </td>
               <td> </td>
@@ -18244,18 +18244,18 @@ document.getElementById('mult_volume_gan').focus();" value="Clear"/>
         <div class="encart">
 
           <form action="" id="form_add_capacites" onsubmit="return false;">
-            
+
             <p>
 
-              Add capacities: 
+              Add capacities:
 
             </p>
 
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th> 
-                  <th><em>gur</em></th> 
+                  <th></th>
+                  <th><em>gur</em></th>
                   <th><em>bariga</em></th>
                   <th><em>ban</em></th>
                   <th><em>sila</em></th>
@@ -18323,7 +18323,7 @@ document.getElementById('mult_volume_gan').focus();" value="Clear"/>
                 <tr>
                   <td align="center">+
 
-                  </td> 
+                  </td>
 
                   <td>
 
@@ -18389,16 +18389,16 @@ document.getElementById('mult_volume_gan').focus();" value="Clear"/>
 
                     <input type="button" name="bouton" value="="
                            onclick="add_capacites(this.form)" />
-                    
+
                   </td>
 
-                  <td colspan="5"> 
+                  <td colspan="5">
 
                     <span id="add_capacities_output"></span>
 
                     <!-- <input type="text" name="output" value=""
                     size="45" /> -->
-                    
+
                   </td>
 
                   <td>
@@ -18407,7 +18407,7 @@ document.getElementById('mult_volume_gan').focus();" value="Clear"/>
 clear_result('add_capacities_output');
 document.getElementById('add_capacities_gur1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -18421,9 +18421,9 @@ document.getElementById('add_capacities_gur1').focus();" value="Clear"/>
 
           <form action="" id="form_soustr_capacites" onsubmit="return false;">
 
-            <p> 
+            <p>
 
-              Subtract capacities: 
+              Subtract capacities:
 
             </p>
 
@@ -18498,7 +18498,7 @@ document.getElementById('add_capacities_gur1').focus();" value="Clear"/>
                 </tr>
 
                 <tr>
-                  <td align="center">&minus;</td> 
+                  <td align="center">&minus;</td>
 
                   <td>
 
@@ -18561,19 +18561,19 @@ document.getElementById('add_capacities_gur1').focus();" value="Clear"/>
 
                 <tr>
                   <td>
-                    
+
                     <input type="button" name="bouton" value="="
                            onclick="soustr_capacites(this.form)" />
-                    
+
                   </td>
 
-                  <td colspan="5"> 
+                  <td colspan="5">
 
                     <span id="subtract_capacities_output"></span>
 
                     <!-- <input type="text" name="output" value=""
                     size="45"/> -->
-                    
+
                   </td>
 
                   <td>
@@ -18582,7 +18582,7 @@ document.getElementById('add_capacities_gur1').focus();" value="Clear"/>
 clear_result('subtract_capacities_output');
 document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -18596,15 +18596,15 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
 
           <form action="" id="form_mult_capacite" onsubmit="return false;">
 
-            <p>  
+            <p>
 
-              Multiply a capacity: 
+              Multiply a capacity:
 
             </p>
 
             <div class="retrait">
               <table class="encadre">
-                <tr> 
+                <tr>
                   <td>
 
                     <input type="text" name="gur" id="mult_capacite_gur"
@@ -18641,17 +18641,17 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
                   </td>
 
                   <td>
-                    
+
                     <input type="text" name="gin" id="mult_capacite_gin"
                            value="" size="8" onkeypress="if
                            (event.keyCode == 13)
                            mult_capacite_form(this.form)"
-                           /> 
+                           />
 
                   </td>
 
                   <td>
-                    
+
                     <input type="text" name="se" id="mult_capacite_se"
                            value="" size="8" onkeypress="if
                            (event.keyCode == 13)
@@ -18679,7 +18679,7 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
                            mult_capacite_form(this.form)" />
 
                     times
-                    
+
                   </td>
                 </tr>
 
@@ -18696,13 +18696,13 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
                   </td>
 
                   <td colspan="4">
-                    
-                    
+
+
                     <span id="mult_capacity_output"></span>
-                    
+
                     <!-- <input type="text" name="output" value=""
                          size="45" /> -->
-                    
+
                   </td>
 
                   <td>
@@ -18711,7 +18711,7 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
                                                   clear_result('mult_capacity_output');
                                                   document.getElementById('mult_capacite_gur').focus();"
                            value="Clear"/>
-           
+
                   </td>
                 </tr>
               </table>
@@ -18763,7 +18763,7 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
 
           <form action="" id="form_add_poids" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Add weights:
 
@@ -18773,7 +18773,7 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
               <table class="encadre">
                 <tr>
                   <th></th>
-                  <th><em>gu</em></th> 
+                  <th><em>gu</em></th>
                   <th><em>mana</em></th>
                   <th><em>gin</em></th>
                   <th><em>še</em></th>
@@ -18818,7 +18818,7 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
                 </tr>
 
                 <tr>
-                  <td align="center">+ </td> 
+                  <td align="center">+ </td>
 
                   <td>
 
@@ -18866,16 +18866,16 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
 
                     <input type="button" name="bouton" value="="
                            onclick="add_poids(this.form)" />
-                    
+
                   </td>
 
-                  <td colspan="3">   
+                  <td colspan="3">
 
                     <span id="add_weights_output"></span>
 
                     <!-- <input type="text" name="output" value=""
                     size="45"/>-->
-                   
+
                   </td>
 
                   <td>
@@ -18884,7 +18884,7 @@ document.getElementById('subtract_capacities_gur1').focus();" value="Clear"/>
 clear_result('add_weights_output');
 document.getElementById('add_weights_gu1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -18899,7 +18899,7 @@ document.getElementById('add_weights_gu1').focus();" value="Clear"/>
 
           <form action="" id="form_soustr_poids" onsubmit="return false;">
 
-            <p> 
+            <p>
 
               Subtract weights:
 
@@ -18908,7 +18908,7 @@ document.getElementById('add_weights_gu1').focus();" value="Clear"/>
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th></th> 
+                  <th></th>
                   <th><em>gu</em></th>
                   <th><em>mana</em></th>
                   <th><em>gin</em></th>
@@ -19003,11 +19003,11 @@ document.getElementById('add_weights_gu1').focus();" value="Clear"/>
                   <td>
 
                     <input type="button" name="bouton" value="="
-                           onclick="soustr_poids(this.form)" /> 
-                    
+                           onclick="soustr_poids(this.form)" />
+
                   </td>
 
-                  <td colspan="3"> 
+                  <td colspan="3">
 
                     <span id="subtract_weights_output"></span>
 
@@ -19022,7 +19022,7 @@ document.getElementById('add_weights_gu1').focus();" value="Clear"/>
 clear_result('subtract_weights_output');
 document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
 
-                  </td> 
+                  </td>
                 </tr>
               </table>
             </div>
@@ -19038,16 +19038,16 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
 
           <form action="" id="form_mult_poids" onsubmit="return false;">
 
-            <p> 
+            <p>
 
-              Multiply a weight: 
+              Multiply a weight:
 
             </p>
 
             <div class="retrait">
               <table class="encadre">
 
-                <tr> 
+                <tr>
                   <td>
 
                     <input type="text" name="gu" id="mult_poids_gu"
@@ -19091,7 +19091,7 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
                   <td> <strong><em>še</em></strong> </td>
                   </tr>
 
-                <tr> 
+                <tr>
                   <td colspan="4"> &times;
 
                     <input type="text" name="scalaire"
@@ -19100,7 +19100,7 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
                            mult_poids_form(this.form)" />
 
                     times
-                    
+
                   </td>
                 </tr>
 
@@ -19114,26 +19114,26 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
 
                     <input type="button" name="bouton" value="="
                            onclick="mult_poids_form(this.form)" />
-                    
+
                   </td>
 
                   <td colspan="2">
-                    
+
                     <span id="mult_weight_output"></span>
-                    
+
                     <!-- <input type="text" name="output" value=""
                          size="45" /> -->
 
                   </td>
 
                   <td>
-                    
+
                     <input type="button" onclick="form.reset();
                                                   clear_result('mult_weight_output');
                                                   document.getElementById('mult_poids_gu').focus();"
                                                   value="Clear"/>
-       
-                  </td> 
+
+                  </td>
                 </tr>
               </table>
             </div>
@@ -19228,49 +19228,49 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th>šar-gal</th> <th><em>šar'u</em></th> <th><em>šar</em></th> <th><em>gešu</em></th> 
-                  <th><em>geš</em></th> <th><em>u</em></th> <th><em>diš</em></th>  
+                  <th>šar-gal</th> <th><em>šar'u</em></th> <th><em>šar</em></th> <th><em>gešu</em></th>
+                  <th><em>geš</em></th> <th><em>u</em></th> <th><em>diš</em></th>
                 </tr>
                 <tr>
                   <td>         <input type="text" name="sargal" id="systemS2systemG_sargal" value="" size="7"
-                                      onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" /> 
+                                      onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="saru" value="" size="7"
-                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="sar" value="" size="7"
-                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="gesu" value="" size="7"
                                   onkeypress="if (event.keyCode == 13)
-                                              systemS2systemG(this.form)" /> 
+                                              systemS2systemG(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="ges" value="" size="7"
-                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="u" value="" size="7"
-                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemS2systemG(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="dis" value="" size="7"
                                   onkeypress="if (event.keyCode == 13)
-                                              systemS2systemG(this.form)" /> 
+                                              systemS2systemG(this.form)" />
 
                   </td>
                 </tr>
 
                 <tr>
-                  <td colspan="7">   
+                  <td colspan="7">
                     <input type="button" name="bouton" value="G &rarr;"
-                           onclick="systemS2systemG(this.form)" /> 
+                           onclick="systemS2systemG(this.form)" />
                     <input type="text" name="output" value="" size="45" />
-                    <input type="button" onclick="form.reset(); document.getElementById('systemS2systemG_sargal').focus();" value="Clear"/> 
-                    
+                    <input type="button" onclick="form.reset(); document.getElementById('systemS2systemG_sargal').focus();" value="Clear"/>
+
 
                   </td>
                 </tr>
@@ -19293,50 +19293,50 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
             <div class="retrait">
               <table class="encadre">
                 <tr>
-                  <th><em>šar-gal</em></th> <th><em>šar'u</em></th> <th><em>šar</em></th> <th><em>bur'u</em></th> 
-                  <th><em>bur</em></th> <th><em>eše</em></th> <th><em>iku</em></th>  
+                  <th><em>šar-gal</em></th> <th><em>šar'u</em></th> <th><em>šar</em></th> <th><em>bur'u</em></th>
+                  <th><em>bur</em></th> <th><em>eše</em></th> <th><em>iku</em></th>
                 </tr>
                 <tr>
                   <td>         <input type="text" name="sargal"  id="systemG2systemS_sargal" value="" size="6"
-                                      onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" /> 
+                                      onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="saru" value="" size="6"
-                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="sar" value="" size="6"
-                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="buru" value="" size="6"
                                   onkeypress="if (event.keyCode == 13)
-                                              systemG2systemS_form(this.form)" /> 
+                                              systemG2systemS_form(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="bur" value="" size="6"
-                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="ese" value="" size="6"
-                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" /> 
+                                  onkeypress="if (event.keyCode == 13) systemG2systemS_form(this.form)" />
 
                   </td>
                   <td>     <input type="text" name="iku" value="" size="6"
                                   onkeypress="if (event.keyCode == 13)
-                                              systemG2systemS_form(this.form)" /> 
+                                              systemG2systemS_form(this.form)" />
 
                   </td>
                 </tr>
 
                 <tr>
-                  <td colspan="7">   
+                  <td colspan="7">
                     <input type="button" name="bouton" value="S &rarr;"
-                           onclick="systemG2systemS_form(this.form)" /> 
+                           onclick="systemG2systemS_form(this.form)" />
                     <input type="text" name="output" value="" size="45" />
-                    <input type="button" onclick="form.reset(); document.getElementById('systemG2systemS_sargal').focus();" value="Clear"/> 
+                    <input type="button" onclick="form.reset(); document.getElementById('systemG2systemS_sargal').focus();" value="Clear"/>
 
-                    
+
 
                   </td>
                 </tr>
@@ -19352,7 +19352,7 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
 
                 <div class="encart">
 
-          <form action="" id="form_date" 
+          <form action="" id="form_date"
                 onsubmit="return false;">
 
             <p>
@@ -19380,7 +19380,7 @@ document.getElementById('subtract_weights_gu1').focus();" value="Clear"/>
               <option value="ArtaxerxesII">Artaxerxes II</option>
               <option value="ArtaxerxesIII">Artaxerxes III</option>
               <option value="Arses">Arses</option>
-              <option value="DariusIII">Darius III</option> 
+              <option value="DariusIII">Darius III</option>
               </select>
 
               Year <select id="date_year" onchange="date_update_months();">
@@ -19447,7 +19447,7 @@ after the 6th (month 6b), or the 12th (month 12b).
 months was elaborated during Achaemenid Period, based on the
 fact that 19 solar years and 235 lunar months have the same
 number of days. Seven intercalary months were added over a
-period of 19 years, on year 1, 3, 6, 9, 11, 14, and 17 year. 
+period of 19 years, on year 1, 3, 6, 9, 11, 14, and 17 year.
     Only the 1st year had an intercalary month <em>ulūlu</em> (6b), all the
 others had an <em>addaru</em> (12b).</p>
 
@@ -19458,7 +19458,7 @@ Studies in Ancient Oriental Civilization 24, 1942 and encoded by Bruno
 Gombert (Université Paris 1 Panthéon Sorbonne, ARSCAN).</p>
 
 
-        
+
 
         <h2><a name="faq"/>About MesoCalc</h2>
 
@@ -19466,24 +19466,26 @@ Gombert (Université Paris 1 Panthéon Sorbonne, ARSCAN).</p>
 
         <div class="encart">
 
-          <p> Yes, you can! To download MesoCalc and use it offline on
-            your computer or smartphone, </p>
+          <p> Yes, you can! You can download MesoCalc and use it offline
+            on your computer or smartphone.</p>
 
           <ul>
-            <li>
-              either <a href="http://baptiste.meles.free.fr/site/mesocalc.html">right-click
-                on the present link</a> and select &quot;Save
-                As&quot;; </li>
+            <li> To download the <strong>current version</strong>,
+              select &quot;File &gt; Save As&quot; in your web browser
+              while it is displaying the present page.</li>
 
-            <li> or select &quot;File &gt; Save As&quot; in your web
-              browser while it is displaying the present page. </li>
+            <li>
+              To get the <strong>latest version</strong>, <a href="https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BapMel/mesocalc">download
+              the latest version of the file <code>mesocalc.html</code></a> from <a href="https://www.softwareheritage.org/">Software Heritage</a>,
+              the universal software archive.
+            </li>
 
           </ul>
         </div>
 
 
 
-        <h3><a name="source"/>Can I read the source code?</h3>
+        <h3><a name="source"/>Can I read the source code of MesoCalc?</h3>
 
         <div class="encart">
 
@@ -19493,11 +19495,21 @@ Gombert (Université Paris 1 Panthéon Sorbonne, ARSCAN).</p>
             under the terms of the GNU General Public License (see
             the <a href="#license">license</a> below). </p>
 
-          <p> If you want to see the HTML, CSS and JavaScript source
-            code of this program, you will have to find on option like
-            &quot;View &gt; Page Source&quot; or &quot;Tools &gt; Source
-            Code&quot; in your web browser while displaying the present
-            web page. </p>
+          <p> You can see the source code of this program. It is written
+          in HTML, CSS and JavaScript.</p>
+
+            <ul>
+              <li> To see the <strong>current version</strong>'s source
+            code, go to &quot;View &gt; Page Source&quot; or
+            &quot;Tools &gt; Source Code&quot; in your web browser while
+            displaying the present web page.</li>
+
+            <li>
+              To see the <strong>latest version</strong> or any older, <a href="https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BapMel/mesocalc">display
+              the latest version of the file <code>mesocalc.html</code></a> on <a href="https://www.softwareheritage.org/">Software Heritage</a>,
+              the universal software archive.
+            </li>
+            </ul>
 
         </div>
 
@@ -19515,7 +19527,14 @@ Gombert (Université Paris 1 Panthéon Sorbonne, ARSCAN).</p>
 
           <p> This is the reason why MesoCalc'c source code is archived.
             You can find its successive versions (since 2016)
-            on <a href="https://github.com/BapMel/mesocalc">https://github.com/BapMel/mesocalc</a>.
+            on <a href="https://github.com/BapMel/mesocalc">Github</a> and
+  <a href="https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BapMel/mesocalc">Software Heritage</a>,
+              the universal software archive.
+          </p>
+
+          <p> <a href="https://archive.softwareheritage.org/swh:1:dir:422f91faa6324f6bc1593fdc1387d0c8fea6603a;origin=https://github.com/BapMel/mesocalc;visit=swh:1:snp:8e33bcb11b630dbd2b9fb108ace63f2660985a14;anchor=swh:1:rev:89c3703de074a6eee90efd54e3f8ba26ae48a42e">
+    <img src="https://archive.softwareheritage.org/badge/swh:1:dir:422f91faa6324f6bc1593fdc1387d0c8fea6603a/" alt="Archived | swh:1:dir:422f91faa6324f6bc1593fdc1387d0c8fea6603a"/>
+          </a>
           </p>
         </div>
 
@@ -19533,16 +19552,14 @@ Gombert (Université Paris 1 Panthéon Sorbonne, ARSCAN).</p>
 
           <ul>
 
-            <li><strong>16th September 2015:</strong> bug correction in
-              measurement units. Now, input numbers can be either
-              decimal or sexagesimal (until recently, only sexagesimal
-              numbers were accepted).
-            </li>
+            <li><strong>10th February 2023:</strong> <a href="https://www.softwareheritage.org/">Software Heritage</a> links.
+            <p><a href="https://archive.softwareheritage.org/swh:1:dir:422f91faa6324f6bc1593fdc1387d0c8fea6603a;origin=https://github.com/BapMel/mesocalc;visit=swh:1:snp:8e33bcb11b630dbd2b9fb108ace63f2660985a14;anchor=swh:1:rev:89c3703de074a6eee90efd54e3f8ba26ae48a42e">
+    <img src="https://archive.softwareheritage.org/badge/swh:1:dir:422f91faa6324f6bc1593fdc1387d0c8fea6603a/" alt="Archived | swh:1:dir:422f91faa6324f6bc1593fdc1387d0c8fea6603a"/></a></p></li>
 
-            <li><strong>15th January 2016:</strong> two new features. 1)
-              Regular approximation of a number; 2) a new algorithm to
-              list regular numbers, made possible by Mathieu
-              Ossendrijver's huge database of regular numbers.</li>
+            <li><strong>16th May 2017:</strong> integration of Bruno
+              Gombert's calendar, designed after R. A. Parker and W. H. Dubberstein, <em>Babylonian Chronology,
+              626 B.C.-A.D. 45</em>, Studies in Ancient Oriental
+              Civilization 24, 1942.</li>
 
             <li><strong>7th May 2016:</strong> metric approximation of
               measuring units (metres, litres, etc.). Bug correction in
@@ -19556,10 +19573,16 @@ alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
               </p>
             </li>
 
-            <li><strong>16th May 2017:</strong> integration of Bruno
-              Gombert's calendar, designed after R. A. Parker and W. H. Dubberstein, <em>Babylonian Chronology,
-              626 B.C.-A.D. 45</em>, Studies in Ancient Oriental
-              Civilization 24, 1942.</li>
+            <li><strong>15th January 2016:</strong> two new features. 1)
+              Regular approximation of a number; 2) a new algorithm to
+              list regular numbers, made possible by Mathieu
+              Ossendrijver's huge database of regular numbers.</li>
+
+            <li><strong>16th September 2015:</strong> bug correction in
+              measurement units. Now, input numbers can be either
+              decimal or sexagesimal (until recently, only sexagesimal
+              numbers were accepted).
+            </li>
 
           </ul>
         </div>
@@ -19575,7 +19598,7 @@ alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
           <p>Copyright (C) <a href="http://baptiste.meles.free.fr/">Baptiste
               MÉLÈS</a> 2013.</p>
 
-          <p> Latest version: 19th May 2017.</p>
+          <p> Latest version: 11th April 2024.</p>
 
           <p>This program is free software: you can redistribute it and/or
             modify it under the terms of the GNU General Public License as
@@ -19595,11 +19618,11 @@ alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
 
         <div class="encart">
           <p>If you see bugs or want new features,
-            please <a href="mailto:baptiste.meles@normalesup.org">contact
+            please <a href="mailto:baptiste.meles@univ-lorraine.fr">contact
             Baptiste Mélès</a>. All comments and suggestions are
             welcome! </p>
         </div>
-      </div>        
+      </div>
     </div>
     </body>
     </html>
